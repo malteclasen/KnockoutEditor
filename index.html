@@ -10,6 +10,24 @@
 <body>
 <div data-bind="with: data">
 	<h1 data-bind="text: title">Titel</h1>
+	<img data-bind="attr: {src: image.src}"/>
+	<div>Foto von <span data-bind="text: image.author"></span></div>
+	Kategorien:
+	<ul data-bind="foreach: categories">
+		<ul data-bind="text: $data"></ul>
+	</ul>
+	<h2>Zutaten</h2>
+	<!-- ko foreach: components -->
+	<h3 data-bind="text: title"></h3>
+	<table data-bind="foreach: ingredients">
+		<tr>
+			<td data-bind="text:quantity.amount"></td>
+			<td data-bind="text:quantity.unit"></td>
+			<td><a data-bind="text:ingredient.name, attr: {href: ingredient.url}"></a></td>
+		</tr>
+	</table>
+	<!-- /ko -->
+	<h2>Zubereitung</h2>
 </div>
 
 <script type='text/javascript'>
@@ -19,7 +37,7 @@
 		author: {name: "Malte", url: "/user/malte"},
 		views: 4428,
 		rating: 3,
-		image: { author: "Malte", src: "/streuselkuchen.jpg", galleryUrl: "/gallery" },
+		image: { author: "Malte", src: "streuselkuchen.jpg", galleryUrl: "/gallery" },
 		components: [
 			{ 
 				title: "Teig",
@@ -92,7 +110,6 @@
 				}
 			}
 		}
-
 
 		self.data(ko.mapping.fromJS(serverData)) //ko.mapping.fromJS(data, mapping);
 		//var unmapped = ko.mapping.toJS(viewModel);
