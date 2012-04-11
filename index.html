@@ -36,10 +36,12 @@
 	<!-- ko foreach: components -->
 	<h3 data-bind="text: title"></h3>
 	<div data-bind="text: preparation">
-	test
 	</div>
 	<!-- /ko -->
 </div>
+<form>
+	<textarea data-bind="text: json" style="width: 600px; height: 400px;"></textarea>
+</form>
 
 <script type='text/javascript'>
 	var serverData = {
@@ -157,6 +159,10 @@
 
 		self.data(ko.mapping.fromJS(serverData, mapping))
 		//var unmapped = ko.mapping.toJS(viewModel);
+		
+		self.json = ko.computed(function() {
+			return ko.mapping.toJSON(self.data);
+    }, this);
 	}
 	
 	var viewModel = new RecipeViewModel();
