@@ -21,13 +21,24 @@
 	<h3 data-bind="text: title"></h3>
 	<table data-bind="foreach: ingredients">
 		<tr>
-			<td data-bind="text:quantity.amount"></td>
-			<td data-bind="text:quantity.unit"></td>
-			<td><a data-bind="text:ingredient.name, attr: {href: ingredient.url}"></a></td>
+			<!-- ko if: quantity -->
+			<td data-bind="text:quantity().amount"></td>
+			<td data-bind="text:quantity().unit"></td>
+			<!-- /ko -->
+			<!-- ko ifnot: quantity -->
+			<td></td><td></td>
+			<!-- /ko -->
+			<td><a data-bind="text:ingredient().name, attr: {href: ingredient().url}"></a></td>
 		</tr>
 	</table>
 	<!-- /ko -->
 	<h2>Zubereitung</h2>
+	<!-- ko foreach: components -->
+	<h3 data-bind="text: title"></h3>
+	<div data-bind="text: preparation">
+	test
+	</div>
+	<!-- /ko -->
 </div>
 
 <script type='text/javascript'>
@@ -41,7 +52,7 @@
 		components: [
 			{ 
 				title: "Teig",
-				preparation : "Mehl in eine Schüssel geben und eine Kuhle hineindrücken. Zucker, Hefe und lauwarmen Soja-Reis-Drink hineingeben. Mit einem Küchentuch zudecken und 15 Minuten lang gehen lassen. Margarine zerlassen und ebenfalls in die Kuhle geben. Von innenheraus mit dem restlichen Mehl verkneten. Nochmals 15 Minuten lang zugedeckt gehen lassen. Auf einem mit Backpapier ausgelegten Blech ausrollen und wieder 15 Minuten lang gehen lassen.",
+				preparation: "Mehl in eine Schüssel geben und eine Kuhle hineindrücken. Zucker, Hefe und lauwarmen Soja-Reis-Drink hineingeben. Mit einem Küchentuch zudecken und 15 Minuten lang gehen lassen. Margarine zerlassen und ebenfalls in die Kuhle geben. Von innenheraus mit dem restlichen Mehl verkneten. Nochmals 15 Minuten lang zugedeckt gehen lassen. Auf einem mit Backpapier ausgelegten Blech ausrollen und wieder 15 Minuten lang gehen lassen.",
 				ingredients: [
 					{ 
 						quantity: {amount: 400, unit: "g" },
@@ -92,26 +103,59 @@
 					{ 
 						ingredient: {name: "Zimt", url: "/Zimt"}
 					}											
-				]
-				
+				]				
 			}
 		]
 	};
 
+	function QuantityModel(data)
+	{
+		this.amount = ko.observable(data.amount);
+		this.unit = ko.observable(data.unit);
+	}
+	
+	function IngredientModel(data)
+	{
+		this.name = ko.observable(data.name);
+		this.url = ko.observable(data.url);
+	}
+	
+	function RecipeIngredientModel(data)
+	{
+		this.quantity = ko.observable();
+		if(data.quantity)
+			this.quantity(new QuantityModel(data.quantity));
+		this.ingredient = ko.observable();
+		this.ingredient(new IngredientModel(data.ingredient));
+	}
+	
+	function ComponentModel(data)
+	{
+		this.title = ko.observable(data.title);
+		this.preparation = ko.observable(data.preparation);		
+		this.ingredients = ko.observableArray();		
+		this.ingredients($.map(data.ingredients, function(item) { return new RecipeIngredientModel(item) }));
+	}
+	
 	function RecipeViewModel()
 	{
 		var self = this;
 		self.data = ko.observable();
 
+		//http://knockoutjs.com/documentation/plugins-mapping.html
 		var mapping = {
-			'children': {
-				key: function(data) {
-					return ko.utils.unwrapObservable(data.id);
-				}
+			'components': {
+				create: function(options) {
+					return new ComponentModel(options.data);
+					}
+				//,
+				//key: function(data) {
+				//	return ko.utils.unwrapObservable(data.id);
+				//}
 			}
 		}
 
-		self.data(ko.mapping.fromJS(serverData)) //ko.mapping.fromJS(data, mapping);
+		self.data(ko.mapping.fromJS(serverData, mapping))
 		//var unmapped = ko.mapping.toJS(viewModel);
 	}
 	
