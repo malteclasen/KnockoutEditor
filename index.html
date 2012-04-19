@@ -11,16 +11,16 @@
 <form action="#">
 <div data-bind="with: data">
 	<h1 data-bind="text: title">Titel</h1>
-	<img data-bind="attr: {src: image.src}"/>
+	<img src="images/tango/32x32/status/image-missing.png" alt="recipe" data-bind="attr: {src: image.src}"/>
 	<div>Foto von <span data-bind="text: image.author"></span></div>
 	Kategorien:
 	<ul data-bind="foreach: categories">
-		<ul data-bind="text: $data"></ul>
+		<li data-bind="text: $data"></li>
 	</ul>
 	<h2>Zutaten</h2>
 	<!-- ko foreach: components -->
 	<h3 data-bind="text: title"></h3>
-	<button type="button"><img src="images/tango/16x16/actions/list-remove.png"/></button>
+	<button type="button"><img alt="list-remove" src="images/tango/16x16/actions/list-remove.png"/></button>
 	<table data-bind="foreach: ingredients">
 		<tr>
 			<!-- ko if: quantity -->
@@ -34,17 +34,17 @@
 		</tr>
 	</table>
 	<!-- /ko -->
-	<button type="button"><img src="images/tango/16x16/actions/list-add.png"/></button>
+	<button type="button"><img alt="list-add" src="images/tango/16x16/actions/list-add.png"/></button>
 	<h2>Zubereitung</h2>
 	<!-- ko foreach: components -->
 	<h3 data-bind="text: title"></h3>
-	<div contentEditable="true" data-bind="text: preparation, event: {change: updatePreparation}">
+	<div contentEditable="true" data-bind="html: preparation, event: {blur: updatePreparation}">
 	</div>
 	<!-- /ko -->
 </div>
 </form>
-<form>
-	<textarea data-bind="text: json" style="width: 600px; height: 400px;"></textarea>
+<form action="#">
+	<textarea rows="20" cols="80" data-bind="text: json" style="width: 600px; height: 400px;"></textarea>
 </form>
 
 <script type='text/javascript'>
@@ -59,7 +59,14 @@
 			$this.trigger('change');
 		}
 		return $this;
-	});
+    }).live('blur', function () {
+        var $this = $(this);
+        if ($this.data('before') !== $this.html()) {
+            $this.data('before', $this.html());
+            $this.trigger('blur');
+        }
+        return $this;
+    });
 
 	var serverData = {
 		title: "Streuselkuchen",
