@@ -1,7 +1,9 @@
 ﻿(function () {
 
     function showToolbar(editor) {
-        var toolbar = $('<div>Toolbar</div>');
+        var toolbar = $('<div></div>');
+        var bold = $('<button type="button" onclick="document.execCommand(\'bold\',false,null)"><strong>F</strong></button>');
+        toolbar.append(bold);
         toolbar.insertBefore(editor);
     }
 
