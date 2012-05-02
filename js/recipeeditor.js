@@ -89,7 +89,8 @@ function ComponentModel(data) {
     this.ingredients($.map(data.ingredients, function (item) { return new RecipeIngredientModel(item) }));
 
     this.updatePreparation = function (model, event) {
-        this.preparation($(event.target).html());
+        //todo: find out why this interferes with the contentEditable buttons
+        //this.preparation($(event.target).html());
     }
 }
 
