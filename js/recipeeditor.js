@@ -90,7 +90,7 @@ function ComponentModel(data) {
 
     this.updatePreparation = function (model, event) {
         //todo: find out why this interferes with the contentEditable buttons
-        //this.preparation($(event.target).html());
+        this.preparation($(event.target).html());
     }
 }
 
