@@ -1,4 +1,21 @@
-﻿var serverData = {
+﻿(function ($, undefined) {
+    $.fn.getCursorPosition = function () {
+        var el = $(this).get(0);
+        var pos = 0;
+        if ('selectionStart' in el) {
+            pos = el.selectionStart;
+        } else if ('selection' in document) {
+            el.focus();
+            var Sel = document.selection.createRange();
+            var SelLength = document.selection.createRange().text.length;
+            Sel.moveStart('character', -el.value.length);
+            pos = Sel.text.length - SelLength;
+        }
+        return pos;
+    }
+})(jQuery);
+
+var serverData = {
     title: "Streuselkuchen",
     categories: ["Kuchen und Torten", "Kleingebäck"],
     author: { name: "Malte", url: "/user/malte" },
@@ -83,14 +100,40 @@ function RecipeIngredientModel(data) {
 }
 
 function ComponentModel(data) {
+    var self = this;
     this.title = ko.observable(data.title);
     this.preparation = ko.observable(data.preparation);
     this.ingredients = ko.observableArray();
     this.ingredients($.map(data.ingredients, function (item) { return new RecipeIngredientModel(item) }));
 
-    this.updatePreparation = function (model, event) {
-        //todo: find out why this interferes with the contentEditable buttons
-        this.preparation($(event.target).html());
+    this.onUpdatePreparation = function (model, event) {
+        self.preparation($(event.target).html());
+    }
+
+    this.executeCommand = function (command, toolbarEvent) {
+        if (!document.queryCommandEnabled(command)) {
+            return;
+        }
+        document.execCommand(command, false, null);
+        var doc = $(toolbarEvent.target).closest('.contentEditableToolbar').next();
+        console.log(doc.getCursorPosition());
+        self.preparation(doc.html());
+    }
+
+    this.onFormatBold = function (model, event) {
+        self.executeCommand('bold', event);
+    }
+
+    this.onFormatItalic = function (model, event) {
+        self.executeCommand('italic', event);
+    }
+
+    this.onUndo = function (model, event) {
+        self.executeCommand('undo', event);
+    }
+
+    this.onRedo = function (model, event) {
+        self.executeCommand('redo', event);
     }
 }
 

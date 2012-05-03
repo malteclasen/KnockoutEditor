@@ -34,7 +34,13 @@
 	<h2>Zubereitung</h2>
 	<!-- ko foreach: components -->
 	<h3 data-bind="text: title"></h3>
-    <div contentEditable="true" data-bind="html: preparation, event: {change: updatePreparation}">
+    <div class="contentEditableToolbar">
+        <button type="button" data-bind="event: { click: onFormatBold }"><img src="images/tango/22x22/actions/format-text-bold.png"/></button>
+        <button type="button" data-bind="event: { click: onFormatItalic }"><img src="images/tango/22x22/actions/format-text-italic.png"/></button>
+        <button type="button" data-bind="event: { click: onUndo }"><img src="images/tango/22x22/actions/edit-undo.png"/></button>
+        <button type="button" data-bind="event: { click: onRedo }"><img src="images/tango/22x22/actions/edit-redo.png"/></button>
+    </div>
+    <div contentEditable="true" data-bind="html: preparation, event: {change: onUpdatePreparation}">
 	</div>
 	<!-- /ko -->
 </div>
