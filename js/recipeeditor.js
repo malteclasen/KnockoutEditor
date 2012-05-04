@@ -1,21 +1,4 @@
-﻿(function ($, undefined) {
-    $.fn.getCursorPosition = function () {
-        var el = $(this).get(0);
-        var pos = 0;
-        if ('selectionStart' in el) {
-            pos = el.selectionStart;
-        } else if ('selection' in document) {
-            el.focus();
-            var Sel = document.selection.createRange();
-            var SelLength = document.selection.createRange().text.length;
-            Sel.moveStart('character', -el.value.length);
-            pos = Sel.text.length - SelLength;
-        }
-        return pos;
-    }
-})(jQuery);
-
-var serverData = {
+﻿var serverData = {
     title: "Streuselkuchen",
     categories: ["Kuchen und Torten", "Kleingebäck"],
     author: { name: "Malte", url: "/user/malte" },
@@ -107,33 +90,24 @@ function ComponentModel(data) {
     this.ingredients($.map(data.ingredients, function (item) { return new RecipeIngredientModel(item) }));
 
     this.onUpdatePreparation = function (model, event) {
+        console.log('update '+$(event.target).html());
         self.preparation($(event.target).html());
     }
 
-    this.executeCommand = function (command, toolbarEvent) {
-        if (!document.queryCommandEnabled(command)) {
-            return;
-        }
-        document.execCommand(command, false, null);
-        var doc = $(toolbarEvent.target).closest('.contentEditableToolbar').next();
-        console.log(doc.getCursorPosition());
-        self.preparation(doc.html());
-    }
-
     this.onFormatBold = function (model, event) {
-        self.executeCommand('bold', event);
+        contentEditor.formatBold();
     }
 
     this.onFormatItalic = function (model, event) {
-        self.executeCommand('italic', event);
+        contentEditor.formatItalic();
     }
 
     this.onUndo = function (model, event) {
-        self.executeCommand('undo', event);
+        contentEditor.undo();
     }
 
     this.onRedo = function (model, event) {
-        self.executeCommand('redo', event);
+        contentEditor.redo();
     }
 }
 
