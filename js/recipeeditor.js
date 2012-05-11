@@ -90,7 +90,8 @@ function ComponentModel(data) {
     this.ingredients($.map(data.ingredients, function (item) { return new RecipeIngredientModel(item) }));
 
     this.onUpdatePreparation = function (model, event) {
-        console.log('update '+$(event.target).html());
+        console.log('update ' + $(event.target).html());
+        contentEditor.cleanUp(event.target);
         self.preparation($(event.target).html());
     }
 

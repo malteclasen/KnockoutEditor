@@ -40,6 +40,10 @@ function ContentEditor() {
     this.redo = function (model, event) {
         self.executeCommand('redo', event);
     }
+
+    this.cleanUp = function (element) {
+        
+    }
 };
 
 var contentEditor = new ContentEditor();
