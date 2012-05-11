@@ -49,11 +49,11 @@ namespace RecipeEditor
 			defaultBundle.AddFile("~/Scripts/knockout-2.1.0.js");
 			defaultBundle.AddFile("~/Scripts/knockout.mapping-latest.js");
 			defaultBundle.AddFile("~/Scripts/jquery-1.7.2.min.js");
-			//defaultBundle.AddFile("~/Scripts/jquery-ui-1.8.19.js");
-			//defaultBundle.AddFile("~/Scripts/jquery.unobtrusive-ajax.min.js");
-			//defaultBundle.AddFile("~/Scripts/jquery.validate.min.js");
-			//defaultBundle.AddFile("~/Scripts/jquery.validate.unobtrusive.min.js");
-			//defaultBundle.AddFile("~/Scripts/modernizr-2.5.3.js");
+			//defaultBundle.AddFile("~/Scripts/jquery-ui-1.8.19.min.js");
+			defaultBundle.AddFile("~/Scripts/jquery.unobtrusive-ajax.min.js");
+			defaultBundle.AddFile("~/Scripts/jquery.validate.min.js");
+			defaultBundle.AddFile("~/Scripts/jquery.validate.unobtrusive.min.js");
+			defaultBundle.AddFile("~/Scripts/modernizr-2.5.3.js");
 			defaultBundle.AddFile("~/Scripts/richtexteditor.js");			
 			BundleTable.Bundles.Add(defaultBundle);
 
