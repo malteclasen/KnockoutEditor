@@ -137,5 +137,9 @@ function RecipeViewModel() {
     }, this);
 }
 
-var viewModel = new RecipeViewModel();
-ko.applyBindings(viewModel);
+function ShowRecipeEditor() {
+    $("#RecipeEditor").removeClass("preview").addClass("editor");
+}
+function HideRecipeEditor() {
+    $("#RecipeEditor").removeClass("editor").addClass("preview");
+}

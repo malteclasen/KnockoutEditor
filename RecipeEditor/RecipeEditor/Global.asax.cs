@@ -45,23 +45,44 @@ namespace RecipeEditor
 			RegisterGlobalFilters(GlobalFilters.Filters);
 			RegisterRoutes(RouteTable.Routes);
 
-			var defaultBundle = new Bundle("~/Scripts/default", new JsMinify());
-			defaultBundle.AddFile("~/Scripts/knockout-2.1.0.js");
-			defaultBundle.AddFile("~/Scripts/knockout.mapping-latest.js");
-			defaultBundle.AddFile("~/Scripts/jquery-1.7.2.min.js");
-			//defaultBundle.AddFile("~/Scripts/jquery-ui-1.8.19.min.js");
-			defaultBundle.AddFile("~/Scripts/jquery.unobtrusive-ajax.min.js");
-			defaultBundle.AddFile("~/Scripts/jquery.validate.min.js");
-			defaultBundle.AddFile("~/Scripts/jquery.validate.unobtrusive.min.js");
-			defaultBundle.AddFile("~/Scripts/modernizr-2.5.3.js");
-			defaultBundle.AddFile("~/Scripts/richtexteditor.js");			
-			BundleTable.Bundles.Add(defaultBundle);
+			RegisterBundles();
+		}
 
-			var recipeBundle = new Bundle("~/Scripts/recipe", new JsMinify());
-			recipeBundle.AddFile("~/Scripts/recipeeditor.js");
-			BundleTable.Bundles.Add(recipeBundle);
-			
-			//BundleTable.Bundles.RegisterTemplateBundles();
+		private static void RegisterBundles()
+		{
+			RegisterDefaultBundles();
+			RegisterRecipeBundles();
+		}
+
+		private static void RegisterRecipeBundles()
+		{
+			var scripts = new Bundle("~/Scripts/recipe", new JsMinify());
+			scripts.AddFile("~/Scripts/recipeeditor.js");
+			BundleTable.Bundles.Add(scripts);
+
+			var styles = new Bundle("~/Content/recipe", new CssMinify());
+			styles.AddFile("~/Content/RecipeEditor.css");
+			BundleTable.Bundles.Add(styles);
+		}
+
+		private static void RegisterDefaultBundles()
+		{
+			var scripts = new Bundle("~/Scripts/default", new JsMinify());
+			scripts.AddFile("~/Scripts/knockout-2.1.0.js");
+			scripts.AddFile("~/Scripts/knockout.mapping-latest.js");
+			scripts.AddFile("~/Scripts/jquery-1.7.2.min.js");
+			//defaultBundle.AddFile("~/Scripts/jquery-ui-1.8.19.min.js");
+			scripts.AddFile("~/Scripts/jquery.unobtrusive-ajax.min.js");
+			scripts.AddFile("~/Scripts/jquery.validate.min.js");
+			scripts.AddFile("~/Scripts/jquery.validate.unobtrusive.min.js");
+			scripts.AddFile("~/Scripts/modernizr-2.5.3.js");
+			scripts.AddFile("~/Scripts/richtexteditor.js");
+			BundleTable.Bundles.Add(scripts);
+
+			var styles = new Bundle("~/Content/default", new CssMinify());
+			styles.AddDirectory("~/Content/themes/base/minified", "*.css");
+			styles.AddFile("~/Content/Site.css");
+			BundleTable.Bundles.Add(styles);	
 		}
 	}
 }

@@ -4,48 +4,48 @@
     ViewBag.Title = @Model.Title;
 }
 
-<form action="#">
-<div data-bind="with: data">
-	<h1 data-bind="text: title">@Model.Title</h1>
-	<img src="~/Content/icons/tango/32x32/status/image-missing.png" alt="recipe" data-bind="attr: {src: image.src}"/>
-	<div>Foto von <span data-bind="text: image.author"></span></div>
-	Kategorien:
-	<ul data-bind="foreach: categories">
-		<li data-bind="text: $data"></li>
-	</ul>
-	<h2>Zutaten</h2>
-	<!-- ko foreach: components -->
-	<h3 data-bind="text: title"></h3>
-	<button type="button"><img alt="list-remove" src="~/Content/icons/tango/16x16/actions/list-remove.png"/></button>
-	<table data-bind="foreach: ingredients">
-		<tr>
-			<!-- ko if: quantity -->
-			<td data-bind="text:quantity().amount"></td>
-			<td data-bind="text:quantity().unit"></td>
-			<!-- /ko -->
-			<!-- ko ifnot: quantity -->
-			<td></td><td></td>
-			<!-- /ko -->
-			<td><a data-bind="text:ingredient().name, attr: {href: ingredient().url}"></a></td>
-		</tr>
-	</table>
-	<!-- /ko -->
-	<button type="button"><img alt="list-add" src="~/Content/icons/tango/16x16/actions/list-add.png"/></button>
-	<h2>Zubereitung</h2>
-	<!-- ko foreach: components -->
-	<h3 data-bind="text: title"></h3>
-    <div class="contentEditableToolbar">
-        <button type="button" data-bind="event: { click: onFormatBold }"><img src="~/Content/icons/tango/22x22/actions/format-text-bold.png"/></button>
-        <button type="button" data-bind="event: { click: onFormatItalic }"><img src="~/Content/icons/tango/22x22/actions/format-text-italic.png"/></button>
-        <button type="button" data-bind="event: { click: onUndo }"><img src="~/Content/icons/tango/22x22/actions/edit-undo.png"/></button>
-        <button type="button" data-bind="event: { click: onRedo }"><img src="~/Content/icons/tango/22x22/actions/edit-redo.png"/></button>
-    </div>
-    <div contentEditable="true" data-bind="html: preparation, event: {change: onUpdatePreparation}">
+<form action="#" id="RecipeEditor">
+	<div data-bind="with: data">
+		<h1 data-bind="text: title">@Model.Title</h1>
+		<img src="@if(Model.Image != null) {@Model.Image.Url} else {<text>~/Content/icons/tango/32x32/status/image-missing.png</text>}" alt="recipe" data-bind="attr: {src: image.src}"/>
+		<div>Foto von <span data-bind="text: image.author"></span></div>
+		Kategorien:
+		<ul data-bind="foreach: categories">
+			<li data-bind="text: $data"></li>
+		</ul>
+		<h2>Zutaten</h2>
+		<!-- ko foreach: components -->
+		<h3 data-bind="text: title"></h3>
+		<button type="button" class="edit"><img alt="list-remove" src="~/Content/icons/tango/16x16/actions/list-remove.png"/></button>
+		<table data-bind="foreach: ingredients">
+			<tr>
+				<!-- ko if: quantity -->
+				<td data-bind="text:quantity().amount"></td>
+				<td data-bind="text:quantity().unit"></td>
+				<!-- /ko -->
+				<!-- ko ifnot: quantity -->
+				<td></td><td></td>
+				<!-- /ko -->
+				<td><a data-bind="text:ingredient().name, attr: {href: ingredient().url}"></a></td>
+			</tr>
+		</table>
+		<!-- /ko -->
+		<button type="button" class="edit"><img alt="list-add" src="~/Content/icons/tango/16x16/actions/list-add.png"/></button>
+		<h2>Zubereitung</h2>
+		<!-- ko foreach: components -->
+		<h3 data-bind="text: title"></h3>
+		<div class="contentEditableToolbar edit">
+			<button type="button" data-bind="event: { click: onFormatBold }"><img src="~/Content/icons/tango/22x22/actions/format-text-bold.png"/></button>
+			<button type="button" data-bind="event: { click: onFormatItalic }"><img src="~/Content/icons/tango/22x22/actions/format-text-italic.png"/></button>
+			<button type="button" data-bind="event: { click: onUndo }"><img src="~/Content/icons/tango/22x22/actions/edit-undo.png"/></button>
+			<button type="button" data-bind="event: { click: onRedo }"><img src="~/Content/icons/tango/22x22/actions/edit-redo.png"/></button>
+		</div>
+		<div contentEditable="true" data-bind="html: preparation, event: {change: onUpdatePreparation}">
+		</div>
+		<!-- /ko -->
 	</div>
-	<!-- /ko -->
-</div>
+	<button type="button" onclick="ko.applyBindings(new RecipeViewModel());$(this).remove();ShowRecipeEditor();">bearbeiten</button>    
 </form>
 <form action="#">
-	<textarea rows="20" cols="80" data-bind="text: json" style="width: 600px; height: 400px;"></textarea>
 </form>
 <script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Scripts/recipe")"></script>
