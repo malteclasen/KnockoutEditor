@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
@@ -11,9 +10,6 @@ using System.Web.Routing;
 
 namespace RecipeEditor
 {
-	// Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-	// visit http://go.microsoft.com/?LinkId=9394801
-
 	public class MvcApplication : System.Web.HttpApplication
 	{
 		public static void RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -60,8 +56,8 @@ namespace RecipeEditor
 			scripts.AddFile("~/Scripts/recipeeditor.js");
 			BundleTable.Bundles.Add(scripts);
 
-			var styles = new Bundle("~/Content/recipe", new CssMinify());
-			styles.AddFile("~/Content/RecipeEditor.css");
+			var styles = new Bundle("~/Content/recipe", new LessMinify());
+			styles.AddFile("~/Content/RecipeEditor.less");
 			BundleTable.Bundles.Add(styles);
 		}
 
