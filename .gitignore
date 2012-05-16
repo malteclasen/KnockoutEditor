@@ -2,3 +2,4 @@ RecipeEditor/_ReSharper.RecipeEditor/*
 *.suo
 RecipeEditor/*/bin/*
 RecipeEditor/*/obj/*
+*.ncrunchsolution.user

@@ -138,7 +138,8 @@ function RecipeViewModel() {
 }
 
 function ShowRecipeEditor() {
-    $("#RecipeEditor").removeClass("preview").addClass("editor");
+    $("#Recipe").hide();
+    $("#RecipeEditor").show().removeClass("preview").addClass("editor");
 }
 function HideRecipeEditor() {
     $("#RecipeEditor").removeClass("editor").addClass("preview");

@@ -1,16 +1,19 @@
-﻿@my_color: #f00;
-
-#RecipeEditor 
-{
-	border: solid 1px @my_color;
-}
-
-#RecipeEditor.editor .edit
+﻿#RecipeEditor.editor .edit
 {
     display: inherit;
 }
 
 #RecipeEditor .edit
+{
+    display: none;
+}
+
+#RecipeEditor.preview .preview
+{
+    display: inherit;
+}
+
+#RecipeEditor .preview
 {
     display: none;
 }
