@@ -89,27 +89,27 @@ function ComponentModel(data) {
     this.ingredients = ko.observableArray();
     this.ingredients($.map(data.ingredients, function (item) { return new RecipeIngredientModel(item) }));
 
-    this.onUpdatePreparation = function (model, event) {
+    this.onUpdatePreparation = function(model, event) {
         console.log('update ' + $(event.target).html());
         contentEditor.cleanUp(event.target);
         self.preparation($(event.target).html());
-    }
+    };
 
-    this.onFormatBold = function (model, event) {
+    this.onFormatBold = function(model, event) {
         contentEditor.formatBold();
-    }
+    };
 
-    this.onFormatItalic = function (model, event) {
+    this.onFormatItalic = function(model, event) {
         contentEditor.formatItalic();
-    }
+    };
 
-    this.onUndo = function (model, event) {
+    this.onUndo = function(model, event) {
         contentEditor.undo();
-    }
+    };
 
-    this.onRedo = function (model, event) {
+    this.onRedo = function(model, event) {
         contentEditor.redo();
-    }
+    };
 }
 
 function RecipeViewModel() {

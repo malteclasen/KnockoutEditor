@@ -4,47 +4,46 @@
 }
 <div id="Recipe">
     <h1>@Model.Title</h1>
-    <img src="@if (Model.Image != null)
-              {@Model.Image.Url}
-              else
-              {<text>~/Content/icons/tango/32x32/status/image-missing.png</text>}" alt="recipe"/>
-    @if (Model.Image != null)
-    {
-        <div>Foto von @Model.Image.Author</div>	
-    }
+    <img src="@if (Model.Image != null) {@Model.Image.Url} else {<text>~/Content/icons/tango/32x32/status/image-missing.png</text>}" alt="recipe"/>
+    @if (Model.Image != null) { <div>Foto von @Model.Image.Author</div>	}
     
     Kategorien:
-    <ul d-bind="foreach: categories">
-        <li d-bind="text: $data"></li>
-    </ul>
-    <h2>Zutaten</h2>
-    <!-- foreach: components -->
-    <h3 d-bind="text: title"></h3>
-    <button type="button" class="edit">
-        <img alt="list-remove" src="~/Content/icons/tango/16x16/actions/list-remove.png" />
-    </button>
-    <table d-bind="foreach: ingredients">
-        <tr>
-            <!-- if: quantity -->
-            <td d-bind="text:quantity().amount"></td>
-            <td d-bind="text:quantity().unit"></td>
-            <!-- / -->
-            <!-- ifnot: quantity -->
-            <td></td>
-            <td></td>
-            <!-- / -->
-            <td><a d-bind="text:ingredient().name, attr: {href: ingredient().url}"></a></td>
-        </tr>
-    </table>
-    <!-- / -->
-    <h2>Zubereitung</h2>
-    <!-- foreach: components -->
-    <h3 d-bind="text: title"></h3>
-    <div d-bind="html: preparation, event: {change: onUpdatePreparation}">
-    </div>
-    <!-- / -->
-    <button type="button" onclick="ko.applyBindings(new RecipeViewModel());$(this).parent().remove();ShowRecipeEditor();">
-        bearbeiten</button>
+	<ul>
+		@foreach(var category in Model.Categories)
+		{
+			<li>@category</li>
+		}
+	</ul>
+	<h2>Zutaten</h2>
+    @foreach(var component in Model.Components)
+	{
+		<h3>@component.Title</h3>
+		<table>
+			@foreach (var ingredient in component.Ingredients)
+			{
+				<tr>
+					@if (ingredient.Quantity != null)
+					{
+						<td>@ingredient.Quantity.Amount</td>
+						<td>@ingredient.Quantity.Unit</td>
+					}
+					else
+					{
+						<td></td>
+						<td></td>
+					}
+					<td><a href="@ingredient.Ingredient.Url">@ingredient.Ingredient.Name</a></td>
+				</tr>
+			}
+		</table>
+	}
+	<h2>Zubereitung</h2>
+    @foreach(var component in Model.Components)
+    {
+		<h3>@component.Title</h3>
+		<div>@Html.Raw(component.Preparation)</div>
+	}
+    <button type="button" onclick="ko.applyBindings(new RecipeViewModel());$(this).parent().remove();ShowRecipeEditor();">bearbeiten</button>
 </div>
 <form action="#" id="RecipeEditor" data-bind="with: data" style="display: none;">
     <h1 data-bind="text: title"></h1>
