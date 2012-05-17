@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace RecipeEditor.Models
 {
@@ -35,7 +36,7 @@ namespace RecipeEditor.Models
 		public class ComponentModel
 		{
 			public string Title { get; set; }
-			public string Preparation { get; set; }
+			public MvcHtmlString Preparation { get; set; }
 			public List<ComponentIngredientModel> Ingredients { get; set; }
 		}
 

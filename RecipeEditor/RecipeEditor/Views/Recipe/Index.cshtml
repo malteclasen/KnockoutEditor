@@ -41,7 +41,7 @@
     @foreach(var component in Model.Components)
     {
 		<h3>@component.Title</h3>
-		<div>@Html.Raw(component.Preparation)</div>
+		<div>@component.Preparation</div>
 	}
     <button type="button" onclick="ko.applyBindings(new RecipeViewModel());$(this).parent().remove();ShowRecipeEditor();">bearbeiten</button>
 </div>
