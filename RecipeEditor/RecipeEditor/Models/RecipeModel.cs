@@ -56,6 +56,7 @@ namespace RecipeEditor.Models
 		public int AverageRating { get; set; }
 		public ImageModel Image { get; set; }
 		public List<ComponentModel> Components { get; set; }
+		public AuthorModel Author { get; set; }
 		
 		public string Json { get
 		{

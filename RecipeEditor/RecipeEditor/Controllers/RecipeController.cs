@@ -19,6 +19,7 @@ namespace RecipeEditor.Controllers
     				AverageRating = 3,
     				Categories = new List<string> {"Kuchen und Torten", "Kleingebäck"},
     				NumViews = 4428,
+					Author = new RecipeModel.AuthorModel{Name = "Malte", Url = new Uri("/Malte", UriKind.Relative)},
     				Image = new RecipeModel.ImageModel { Author = "Malte", Url = new Uri("/Content/Images/streuselkuchen.jpg", UriKind.Relative), GalleryUrl = new Uri("/gallery/streuselkuchen", UriKind.Relative) },
     				Components = new List<RecipeModel.ComponentModel>
     					{
