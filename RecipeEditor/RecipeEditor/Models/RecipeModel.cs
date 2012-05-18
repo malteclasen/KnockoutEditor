@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Json;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -36,7 +39,7 @@ namespace RecipeEditor.Models
 		public class ComponentModel
 		{
 			public string Title { get; set; }
-			public MvcHtmlString Preparation { get; set; }
+			public string Preparation { get; set; }
 			public List<ComponentIngredientModel> Ingredients { get; set; }
 		}
 
@@ -52,6 +55,14 @@ namespace RecipeEditor.Models
 		public int NumViews { get; set; }
 		public int AverageRating { get; set; }
 		public ImageModel Image { get; set; }
-		public List<ComponentModel> Components { get; set; } 
+		public List<ComponentModel> Components { get; set; }
+		
+		public string Json { get
+		{
+			var stream = new MemoryStream();
+			var ser = new DataContractJsonSerializer(GetType());
+			ser.WriteObject(stream, this);
+			return Encoding.UTF8.GetString(stream.ToArray());
+		}}
 	}
 }
