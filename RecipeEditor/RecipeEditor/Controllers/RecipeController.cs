@@ -112,7 +112,7 @@ namespace RecipeEditor.Controllers
 		}
 
     	[AcceptVerbs(HttpVerbs.Post)]
-		public ActionResult Edit(string modelJson)
+		public ActionResult Edit(RecipeModel model)
 		{
 			return Json("on edit");
 		}

@@ -62,13 +62,14 @@ function RecipeViewModel(initialData) {
     };
 
     this.onSave = function () {
-        var recipe = ko.mapping.toJSON(self.data);
-        $.post("/Recipe/Edit",
-            recipe,
-            function (data) {
-                alert(data.name);
-            }, 'json')
-            .error(function () { alert("error"); });
+        $.ajax("/Recipe/Edit", {
+            data: ko.mapping.toJSON(self.data),
+            type: "post",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (result) { alert(result); }
+        })
+            .error(function (e, jqxhr, settings, exception) { console.log(exception); });
     };
 
     //http://knockoutjs.com/documentation/plugins-mapping.html
