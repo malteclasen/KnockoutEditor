@@ -141,6 +141,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\fileuploader.css" />
+    <Content Include="Content\icons\loading.gif" />
     <Content Include="Content\icons\tango\16x16\actions\address-book-new.png" />
     <Content Include="Content\icons\tango\16x16\actions\appointment-new.png" />
     <Content Include="Content\icons\tango\16x16\actions\bookmark-new.png" />
@@ -1056,6 +1058,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\fileuploader.js" />
     <Content Include="Scripts\jquery-1.7.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.2.js" />
     <Content Include="Scripts\jquery-1.7.2.min.js" />

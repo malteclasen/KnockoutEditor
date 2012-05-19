@@ -48,6 +48,7 @@ namespace RecipeEditor
 		{
 			RegisterDefaultBundles();
 			RegisterRecipeBundles();
+			RegisterFileUploadBundles();
 		}
 
 		private static void RegisterRecipeBundles()
@@ -58,6 +59,17 @@ namespace RecipeEditor
 
 			var styles = new Bundle("~/Content/recipe", new LessMinify());
 			styles.AddFile("~/Content/RecipeEditor.less");
+			BundleTable.Bundles.Add(styles);
+		}
+
+		private static void RegisterFileUploadBundles()
+		{
+			var scripts = new Bundle("~/Scripts/fileuploader", new JsMinify());
+			scripts.AddFile("~/Scripts/fileuploader.js");
+			BundleTable.Bundles.Add(scripts);
+
+			var styles = new Bundle("~/Content/fileuploader", new CssMinify());
+			styles.AddFile("~/Content/fileuploader.css");
 			BundleTable.Bundles.Add(styles);
 		}
 
