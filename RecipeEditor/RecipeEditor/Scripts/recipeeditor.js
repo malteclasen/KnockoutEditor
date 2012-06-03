@@ -25,7 +25,7 @@ function ComponentModel(data) {
 
     this.onUpdatePreparation = function(model, event) {
         contentEditor.cleanUp(event.target);
-        self.preparation($(event.target).html());
+        self.Preparation($(event.target).html());
     };
 
     this.onFormatBold = function(model, event) {

@@ -1,13 +1,14 @@
+@using System.Web.Optimization
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-	<link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Content/default")" rel="stylesheet" type="text/css" />
-    <link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Content/recipe")" rel="stylesheet" type="text/css" />
-    <link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Content/fileuploader")" rel="stylesheet" type="text/css" />
-	<script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Scripts/default")"></script>
+	@Styles.Render("~/Content/default")
+    @Styles.Render("~/Content/recipe")
+    @Styles.Render("~/Content/fileuploader")
+	@Scripts.Render("~/Scripts/default")
 </head>
 <body>
     @RenderBody()

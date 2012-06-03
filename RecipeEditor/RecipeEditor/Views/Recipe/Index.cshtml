@@ -1,4 +1,5 @@
-﻿@model RecipeEditor.Models.RecipeModel
+﻿@using System.Web.Optimization
+@model RecipeEditor.Models.RecipeModel
 @{
     ViewBag.Title = @Model.Title;
 }
@@ -101,7 +102,7 @@
         <img alt="save" src="~/Content/icons/tango/16x16/actions/document-save.png" />
     </button>
 </form>
-<script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Scripts/recipe")"></script>
+@Scripts.Render("~/Scripts/recipe")
 <script type="text/javascript">
 InitRecipeViewModel(@Html.Raw(Model.Json));
 </script>

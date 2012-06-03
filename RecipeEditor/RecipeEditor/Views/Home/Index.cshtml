@@ -1,4 +1,5 @@
-﻿@{
+﻿@using System.Web.Optimization
+@{
     ViewBag.Title = "Index";
 }
 
@@ -11,7 +12,7 @@
         <p>Please enable JavaScript to use file uploader.</p>
     </noscript>
 </div>
-<script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Scripts/fileuploader")"></script>
+@Scripts.Render("~/Scripts/fileuploader")
 <script type="text/javascript">
     var uploader = new qq.FileUploader({
         // pass the dom node (ex. $(selector)[0] for jQuery users)

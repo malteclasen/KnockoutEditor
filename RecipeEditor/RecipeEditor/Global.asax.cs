@@ -53,43 +53,41 @@ namespace RecipeEditor
 
 		private static void RegisterRecipeBundles()
 		{
-			var scripts = new Bundle("~/Scripts/recipe", new JsMinify());
-			scripts.AddFile("~/Scripts/recipeeditor.js");
+			var scripts = new Bundle("~/Scripts/recipe", new JsMinify()).Include("~/Scripts/recipeeditor.js");
 			BundleTable.Bundles.Add(scripts);
 
-			var styles = new Bundle("~/Content/recipe", new LessMinify());
-			styles.AddFile("~/Content/RecipeEditor.less");
+			var styles = new Bundle("~/Content/recipe").Include("~/Content/RecipeEditor.less");
+			styles.Transforms.Add(new LessTransform());
+			styles.Transforms.Add(new CssMinify());
 			BundleTable.Bundles.Add(styles);
 		}
 
 		private static void RegisterFileUploadBundles()
 		{
-			var scripts = new Bundle("~/Scripts/fileuploader", new JsMinify());
-			scripts.AddFile("~/Scripts/fileuploader.js");
+			var scripts = new Bundle("~/Scripts/fileuploader", new JsMinify()).Include("~/Scripts/fileuploader.js");
 			BundleTable.Bundles.Add(scripts);
 
-			var styles = new Bundle("~/Content/fileuploader", new CssMinify());
-			styles.AddFile("~/Content/fileuploader.css");
+			var styles = new Bundle("~/Content/fileuploader", new CssMinify()).Include("~/Content/fileuploader.css");
 			BundleTable.Bundles.Add(styles);
 		}
 
 		private static void RegisterDefaultBundles()
 		{
-			var scripts = new Bundle("~/Scripts/default", new JsMinify());
-			scripts.AddFile("~/Scripts/knockout-2.1.0.js");
-			scripts.AddFile("~/Scripts/knockout.mapping-latest.js");
-			scripts.AddFile("~/Scripts/jquery-1.7.2.min.js");
-			//defaultBundle.AddFile("~/Scripts/jquery-ui-1.8.19.min.js");
-			scripts.AddFile("~/Scripts/jquery.unobtrusive-ajax.min.js");
-			scripts.AddFile("~/Scripts/jquery.validate.min.js");
-			scripts.AddFile("~/Scripts/jquery.validate.unobtrusive.min.js");
-			scripts.AddFile("~/Scripts/modernizr-2.5.3.js");
-			scripts.AddFile("~/Scripts/richtexteditor.js");
+			var scripts = new Bundle("~/Scripts/default", new JsMinify())
+				.Include("~/Scripts/knockout-2.1.0.js")
+				.Include("~/Scripts/knockout.mapping-latest.js")
+				.Include("~/Scripts/jquery-1.7.2.min.js")
+				//.Include("~/Scripts/jquery-ui-1.8.19.min.js")
+				.Include("~/Scripts/jquery.unobtrusive-ajax.min.js")
+				.Include("~/Scripts/jquery.validate.min.js")
+				.Include("~/Scripts/jquery.validate.unobtrusive.min.js")
+				.Include("~/Scripts/modernizr-2.5.3.js")
+				.Include("~/Scripts/richtexteditor.js");
 			BundleTable.Bundles.Add(scripts);
 
-			var styles = new Bundle("~/Content/default", new CssMinify());
-			styles.AddDirectory("~/Content/themes/base/minified", "*.css");
-			styles.AddFile("~/Content/Site.css");
+			var styles = new Bundle("~/Content/default", new CssMinify())
+				.IncludeDirectory("~/Content/themes/base/minified", "*.css")
+				.Include("~/Content/Site.css");
 			BundleTable.Bundles.Add(styles);	
 		}
 	}
