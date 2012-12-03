@@ -74,14 +74,14 @@ namespace RecipeEditor
 		private static void RegisterDefaultBundles()
 		{
 			var scripts = new Bundle("~/Scripts/default", new JsMinify())
-				.Include("~/Scripts/knockout-2.1.0.js")
+				.Include("~/Scripts/knockout-2.2.0.js")
 				.Include("~/Scripts/knockout.mapping-latest.js")
-				.Include("~/Scripts/jquery-1.7.2.min.js")
-				//.Include("~/Scripts/jquery-ui-1.8.19.min.js")
-				.Include("~/Scripts/jquery.unobtrusive-ajax.min.js")
-				.Include("~/Scripts/jquery.validate.min.js")
-				.Include("~/Scripts/jquery.validate.unobtrusive.min.js")
-				.Include("~/Scripts/modernizr-2.5.3.js")
+				.Include("~/Scripts/jquery-1.8.3.js")
+				//.Include("~/Scripts/jquery-ui-1.9.2.js")
+				.Include("~/Scripts/jquery.unobtrusive-ajax.js")
+				.Include("~/Scripts/jquery.validate.js")
+				.Include("~/Scripts/jquery.validate.unobtrusive.js")
+				.Include("~/Scripts/modernizr-2.6.2.js")
 				.Include("~/Scripts/richtexteditor.js");
 			BundleTable.Bundles.Add(scripts);
 
