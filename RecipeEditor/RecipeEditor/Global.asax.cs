@@ -56,7 +56,9 @@ namespace RecipeEditor
 			var scripts = new Bundle("~/Scripts/recipe", new JsMinify()).Include("~/Scripts/recipeeditor.js");
 			BundleTable.Bundles.Add(scripts);
 
-			var styles = new Bundle("~/Content/recipe").Include("~/Content/RecipeEditor.less");
+			var styles = new Bundle("~/Content/recipe")
+				.Include("~/Content/Recipe.less")
+				.Include("~/Content/RecipeEditor.less");
 			styles.Transforms.Add(new LessTransform());
 			styles.Transforms.Add(new CssMinify());
 			BundleTable.Bundles.Add(styles);
@@ -85,9 +87,11 @@ namespace RecipeEditor
 				.Include("~/Scripts/richtexteditor.js");
 			BundleTable.Bundles.Add(scripts);
 
-			var styles = new Bundle("~/Content/default", new CssMinify())
+			var styles = new Bundle("~/Content/default")
 				.IncludeDirectory("~/Content/themes/base/minified", "*.css")
-				.Include("~/Content/Site.css");
+				.Include("~/Content/Site.less");
+			styles.Transforms.Add(new LessTransform());
+			styles.Transforms.Add(new CssMinify());
 			BundleTable.Bundles.Add(styles);	
 		}
 	}

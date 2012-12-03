@@ -1005,6 +1005,7 @@
     <Content Include="Content\icons\tango\scalable\status\weather-showers.svg" />
     <Content Include="Content\icons\tango\scalable\status\weather-snow.svg" />
     <Content Include="Content\icons\tango\scalable\status\weather-storm.svg" />
+    <Content Include="Content\Recipe.less" />
     <None Include="Content\RecipeEditor.less" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -1067,7 +1068,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <None Include="Content\Site.less" />
     <Content Include="Scripts\fileuploader.js" />
     <None Include="Scripts\jquery-1.8.3.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />

@@ -1,12 +1,57 @@
+@backgroundColor: #EFEFF2;
+@accent1: #CA5100;
+@accent2: #CA5100;
+
+.rounded_corners(@radius: 10px) {
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+  border-radius: @radius;
+}
+
 body {
     font-size: .85em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     color: #232323;
-    background-color: #fff;
+    background-color: @backgroundColor;
+    margin: 0;
+    padding: 20px;
 }
 
 header, footer, nav, section {
     display: block;
+}
+
+header {
+    font-size: 42pt;
+    font-family: "Segoe UI Light", Verdana, Helvetica, Sans-Serif;
+}
+
+
+.center {
+    .rounded_corners;
+    width: 960px - 2*20px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: normal;
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: normal;
+    margin-top: 0;
+}
+
+h3 {
+    font-family: "Segoe UI Light", Verdana, Helvetica, Sans-Serif;
+    font-size: 24px;
+    font-weight: normal;
+    margin-top: 0;
 }
 
 
@@ -59,3 +104,4 @@ textarea {
 .validation-summary-valid {
     display: none;
 }
+

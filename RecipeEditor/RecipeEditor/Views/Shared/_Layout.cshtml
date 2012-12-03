@@ -2,15 +2,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
 	@Styles.Render("~/Content/default")
-    @Styles.Render("~/Content/recipe")
-    @Styles.Render("~/Content/fileuploader")
+	@Styles.Render("~/Content/recipe")
+	@Styles.Render("~/Content/fileuploader")
 	@Scripts.Render("~/Scripts/default")
 </head>
 <body>
-    @RenderBody()
+	<div class="center">
+		<header>
+			Knockout Editor Demo
+		</header>
+		<div class="content">
+			@RenderBody()
+		</div>
+	</div>
 </body>
 </html>
