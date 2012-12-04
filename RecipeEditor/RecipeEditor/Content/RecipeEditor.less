@@ -24,11 +24,22 @@
 	text-align: right;
 }
 
+.toolbar.forContentEditable {
+	position: absolute;
+	right: 0px;
+	text-align: right;
+}
+
 .toolbar button {
 	position: relative;
+	top: 10px;
+}
+
+.toolbar.forContentEditable button {
 	top: -32px;
 }
 
 [contenteditable="true"] {
 	background-color: @editableHintColor;
+	min-height: 1em;
 }

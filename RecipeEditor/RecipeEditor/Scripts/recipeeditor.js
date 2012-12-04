@@ -39,14 +39,6 @@ function ComponentModel(data) {
     this.onFormatItalic = function(model, event) {
         contentEditor.formatItalic();
     };
-
-    this.onUndo = function(model, event) {
-        contentEditor.undo();
-    };
-
-    this.onRedo = function(model, event) {
-        contentEditor.redo();
-    };
 }
 
 function RecipeViewModel(initialData) {
@@ -80,6 +72,15 @@ function RecipeViewModel(initialData) {
     	self.data().Title($(event.target).text());
     };
 
+    this.onAddComponent = function (model, event) {
+    	self.data().Components.push(new ComponentModel({ Title: "neu", Preparation: "", Ingredients: [] }));
+    	RefreshRecipeEditorDisplay();
+    }
+
+    this.onRemoveComponent = function (model, event) {
+    	self.data().Components.remove(model);
+    }
+
     //http://knockoutjs.com/documentation/plugins-mapping.html
     var mapping = {
         'Components': {
@@ -95,7 +96,7 @@ function RecipeViewModel(initialData) {
 
     //self.revert(onLoaded);
     self.data(ko.mapping.fromJS(initialData, mapping));
-    //var unmapped = ko.mapping.toJS(viewModel);
+	//var unmapped = ko.mapping.toJS(viewModel);
 
     self.json = ko.computed(function () {
         return ko.mapping.toJSON(self.data);
@@ -104,6 +105,10 @@ function RecipeViewModel(initialData) {
 
 function ShowRecipeEditor() {    
 	$("#RecipeEditor").removeClass("preview").addClass("editor");
+	$(".contenteditable").attr("contenteditable", "true");
+}
+
+function RefreshRecipeEditorDisplay() {
 	$(".contenteditable").attr("contenteditable", "true");
 }
 

@@ -32,14 +32,6 @@ function ContentEditor() {
         self.executeCommand('italic', event);
     };
 
-    this.undo = function(model, event) {
-        self.executeCommand('undo', event);
-    };
-
-    this.redo = function(model, event) {
-        self.executeCommand('redo', event);
-    };
-
     this.cleanUp = function(element) {
 
     };

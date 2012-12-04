@@ -62,12 +62,11 @@
 		</ul>
 		<h2>Zutaten</h2>
 		<!-- ko foreach: Components -->
-		<h3 class="contenteditable" data-bind="text: Title, event: {change: onUpdateTitle}"></h3>
 		<div class="toolbar edit">
-			<button type="button" class="edit">
+			<button type="button" data-bind="event: { click: $root.onRemoveComponent }">
 				<img alt="list-remove" src="~/Content/icons/tango/16x16/actions/list-remove.png" />
 			</button>
-		</div>
+		</div>		<h3 class="contenteditable" data-bind="text: Title, event: {change: onUpdateTitle}"></h3>
 		<table data-bind="foreach: Ingredients">
 			<tr>
 				<!-- ko if: Quantity -->
@@ -83,7 +82,7 @@
 		</table>
 		<!-- /ko -->
 		<div class="toolbar edit">
-			<button type="button">
+			<button type="button" data-bind="event: { click: $parent.onAddComponent }">
 				<img alt="list-add" src="~/Content/icons/tango/16x16/actions/list-add.png" />
 			</button>
 		</div>
@@ -97,15 +96,11 @@
 		<h2>Zubereitung</h2>
 		<!-- ko foreach: Components -->
 		<h3 class="contenteditable" data-bind="text: Title, event: {change: onUpdateTitle}"></h3>
-		<div class="toolbar edit">
+		<div class="toolbar forContentEditable edit">
 			<button type="button" data-bind="event: { click: onFormatBold }">
 				<img src="~/Content/icons/tango/22x22/actions/format-text-bold.png" /></button>
 			<button type="button" data-bind="event: { click: onFormatItalic }">
 				<img src="~/Content/icons/tango/22x22/actions/format-text-italic.png" /></button>
-			<button type="button" data-bind="event: { click: onUndo }">
-				<img src="~/Content/icons/tango/22x22/actions/edit-undo.png" /></button>
-			<button type="button" data-bind="event: { click: onRedo }">
-				<img src="~/Content/icons/tango/22x22/actions/edit-redo.png" /></button>
 		</div>
 		<div class="contenteditable" data-bind="html: Preparation, event: {change: onUpdatePreparation}">
 		</div>
