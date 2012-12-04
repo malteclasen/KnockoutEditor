@@ -57,7 +57,7 @@ function RecipeViewModel(initialData) {
     };
 
     this.onRevert = function () {
-    	if (confirm("sicher?")) {
+    	if (confirm("Soll wirklich neu geladen werden? Alle ungespeicherten Änderungen gehen verloren.")) {
     		self.revert();
     	}
     };
@@ -68,7 +68,7 @@ function RecipeViewModel(initialData) {
             type: "post",
             contentType: "application/json",
             dataType: "json",
-            success: function (result) { alert(result); }
+            success: function (result) { ShowLogMessage(result); }
         })
             .error(function (e, jqxhr, settings, exception) { console.log(exception); });
     };
@@ -133,4 +133,8 @@ function InitRecipeEditor() {
     $("#RecipeEditor").show();
     ShowRecipeEditor();    
     $("#Recipe").hide();
+}
+
+function ShowLogMessage(message) {
+	$(".messageLog").text(message).show().delay(10000).fadeOut(2000);
 }

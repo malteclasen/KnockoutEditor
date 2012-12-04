@@ -114,7 +114,7 @@ namespace RecipeEditor.Controllers
     	[AcceptVerbs(HttpVerbs.Post)]
 		public ActionResult Edit(RecipeModel model)
 		{
-			return Json("on edit");
+			return Json("gespeichert um " + DateTime.Now.ToShortTimeString());
 		}
 	}
 }
