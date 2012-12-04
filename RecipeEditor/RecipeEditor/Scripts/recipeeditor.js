@@ -48,13 +48,18 @@ function RecipeViewModel(initialData) {
     this.revert = function(onSuccess) {
         $.getJSON("/Recipe/Get", function(data) {
             self.data(ko.mapping.fromJS(data, mapping));
-            if (onSuccess) onSuccess();
+            if (onSuccess) {
+            	onSuccess();
+            }
+            RefreshRecipeEditorDisplay();
         })
             .error(function(e, jqxhr, settings, exception) { console.log(exception); });
     };
 
     this.onRevert = function () {
-        if (confirm("sicher?")) self.revert();
+    	if (confirm("sicher?")) {
+    		self.revert();
+    	}
     };
 
     this.onSave = function () {

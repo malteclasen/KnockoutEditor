@@ -50,7 +50,9 @@
 			<h3>@component.Title</h3>
 			<div>@Html.Raw(component.Preparation)</div>
   }
-		<button type="button" onclick="InitRecipeEditor()">bearbeiten</button>
+		<div class="menubar">
+			<button type="button" onclick="InitRecipeEditor()">bearbeiten</button>
+		</div>
 	</div>
 </div>
 <form action="#" id="RecipeEditor" data-bind="with: data" style="display: none;">
@@ -64,7 +66,7 @@
 		<!-- ko foreach: Components -->
 		<div class="toolbar edit">
 			<button type="button" data-bind="event: { click: $root.onRemoveComponent }">
-				<img alt="list-remove" src="~/Content/icons/tango/16x16/actions/list-remove.png" />
+				<img alt="list-remove" src="~/Content/icons/tango/22x22/actions/list-remove.png" />
 			</button>
 		</div>		<h3 class="contenteditable" data-bind="text: Title, event: {change: onUpdateTitle}"></h3>
 		<table data-bind="foreach: Ingredients">
@@ -83,7 +85,7 @@
 		<!-- /ko -->
 		<div class="toolbar edit">
 			<button type="button" data-bind="event: { click: $parent.onAddComponent }">
-				<img alt="list-add" src="~/Content/icons/tango/16x16/actions/list-add.png" />
+				<img alt="list-add" src="~/Content/icons/tango/22x22/actions/list-add.png" />
 			</button>
 		</div>
 	</div>
@@ -105,14 +107,20 @@
 		<div class="contenteditable" data-bind="html: Preparation, event: {change: onUpdatePreparation}">
 		</div>
 		<!-- /ko -->
-		<button type="button" class="edit" onclick="HideRecipeEditor();">vorschau</button>
-		<button type="button" class="preview" onclick="ShowRecipeEditor();">bearbeiten</button>
-		<button type="button" data-bind="event: {click: $parent.onRevert}">
-			<img alt="revert" src="~/Content/icons/tango/16x16/actions/edit-undo.png" />
-		</button>
-		<button type="button" data-bind="event: {click: $parent.onSave}">
-			<img alt="save" src="~/Content/icons/tango/16x16/actions/document-save.png" />
-		</button>
+		<div class="menubar">
+			<div class="preview">
+				<button type="button" onclick="ShowRecipeEditor();">bearbeiten</button>
+			</div>			
+			<div class="edit">
+				<button type="button" onclick="HideRecipeEditor();">vorschau</button>
+				<button type="button" data-bind="event: {click: $parent.onRevert}">
+					<img alt="revert" src="~/Content/icons/tango/22x22/actions/edit-undo.png" />
+				</button>
+				<button type="button" data-bind="event: {click: $parent.onSave}">
+					<img alt="save" src="~/Content/icons/tango/22x22/actions/document-save.png" />
+				</button>
+			</div>
+		</div>
 	</div>
 </form>
 @Scripts.Render("~/Scripts/recipe")
