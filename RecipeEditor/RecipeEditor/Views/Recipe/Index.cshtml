@@ -54,7 +54,7 @@
 	</div>
 </div>
 <form action="#" id="RecipeEditor" data-bind="with: data" style="display: none;">
-	<h1 data-bind="text: Title"></h1>
+	<h1 class="contenteditable" data-bind="text: Title, event: {change: $parent.onUpdateTitle}"></h1>
 	<div class="columnRight">
 		<h3>Kategorien</h3>
 		<ul data-bind="foreach: Categories">

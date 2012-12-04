@@ -76,6 +76,10 @@ function RecipeViewModel(initialData) {
             .error(function (e, jqxhr, settings, exception) { console.log(exception); });
     };
 
+    this.onUpdateTitle = function (model, event) {
+    	self.data().Title($(event.target).text());
+    };
+
     //http://knockoutjs.com/documentation/plugins-mapping.html
     var mapping = {
         'Components': {
