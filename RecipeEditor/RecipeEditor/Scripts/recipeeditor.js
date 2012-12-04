@@ -28,6 +28,10 @@ function ComponentModel(data) {
         self.Preparation($(event.target).html());
     };
 
+    this.onUpdateTitle = function (model, event) {
+    	self.Title($(event.target).text());
+    };
+
     this.onFormatBold = function(model, event) {
         contentEditor.formatBold();
     };
@@ -95,11 +99,13 @@ function RecipeViewModel(initialData) {
 }
 
 function ShowRecipeEditor() {    
-    $("#RecipeEditor").removeClass("preview").addClass("editor");
+	$("#RecipeEditor").removeClass("preview").addClass("editor");
+	$(".contenteditable").attr("contenteditable", "true");
 }
 
 function HideRecipeEditor() {
-    $("#RecipeEditor").removeClass("editor").addClass("preview");
+	$("#RecipeEditor").removeClass("editor").addClass("preview");
+	$(".contenteditable").attr("contenteditable", "false");
 }
 
 var recipeViewModel;
