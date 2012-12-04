@@ -1,5 +1,6 @@
 ﻿@accent1: #CA5100;
 @accent2: #CA5100;
+@editableHintColor: #fff7cc;
 
 #RecipeEditor.editor .edit {
 	display: inherit;
@@ -26,4 +27,8 @@
 .toolbar button {
 	position: relative;
 	top: -32px;
+}
+
+[contenteditable="true"] {
+	background-color: @editableHintColor;
 }
