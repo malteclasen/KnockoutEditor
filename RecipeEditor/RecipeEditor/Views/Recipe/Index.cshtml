@@ -9,33 +9,25 @@
 		<h3>Kategorien</h3>
 		<ul>
 			@foreach (var category in Model.Categories)
-   {
+			{
 				<li>@category</li>
-   }
+			}
 		</ul>
 		<h2>Zutaten</h2>
 		@foreach (var component in Model.Components)
-  {
+		{
 			<h3>@component.Title</h3>
 			<table>
 				@foreach (var ingredient in component.Ingredients)
-	{
-					<tr>
-						@if (ingredient.Quantity != null)
-	  {
-							<td>@ingredient.Quantity.Amount</td>
-							<td>@ingredient.Quantity.Unit</td>
-	  }
-	  else
-	  {
-							<td></td>
-							<td></td>
-	  }
-						<td><a href="@ingredient.Ingredient.Url">@ingredient.Ingredient.Name</a></td>
+				{
+					<tr class="ingredient">
+						<td class="amount">@ingredient.Quantity.Amount</td>
+						<td class="unit">@ingredient.Quantity.Unit</td>
+						<td class="name"><a href="@ingredient.Ingredient.Url">@ingredient.Ingredient.Name</a></td>
 					</tr>
-	}
+				}
 			</table>
-  }
+		}
 	</div>
 	<div class="columnLeft">
 		<img class="photo" src="@if (Model.Image != null)
@@ -43,13 +35,13 @@
 						  else
 						  {<text>~/Content/icons/tango/32x32/status/image-missing.png</text>}" alt="recipe"/>
 		@if (Model.Image != null)
-  { <div>Foto von @Model.Image.Author</div>	}
+		{ <div>Foto von @Model.Image.Author</div>	}
 		<h2>Zubereitung</h2>
 		@foreach (var component in Model.Components)
-  {
+		{
 			<h3>@component.Title</h3>
 			<div>@Html.Raw(component.Preparation)</div>
-  }
+		}
 		<div class="menubar">
 			<button type="button" onclick="InitRecipeEditor()">bearbeiten</button>
 		</div>
@@ -68,18 +60,26 @@
 			<button type="button" data-bind="event: { click: $root.onRemoveComponent }">
 				<img alt="list-remove" src="~/Content/icons/tango/22x22/actions/list-remove.png" />
 			</button>
-		</div>		<h3 class="contenteditable" data-bind="text: Title, event: {change: onUpdateTitle}"></h3>
-		<table data-bind="foreach: Ingredients">
-			<tr>
-				<!-- ko if: Quantity -->
-				<td data-bind="text:Quantity().Amount"></td>
-				<td data-bind="text:Quantity().Unit"></td>
-				<!-- /ko -->
-				<!-- ko ifnot: Quantity -->
-				<td></td>
-				<td></td>
-				<!-- /ko -->
-				<td><a data-bind="text:Ingredient().Name, attr: {href: Ingredient().Url}"></a></td>
+		</div>
+		<h3 class="contenteditable" data-bind="text: Title, event: {change: onUpdateTitle}"></h3>
+		<table class="preview" data-bind="foreach: Ingredients">
+			<tr class="ingredient">
+				<td class="amount" data-bind="text:Quantity().Amount"></td>
+				<td class="unit" data-bind="text:Quantity().Unit"></td>
+				<td class="name"><a data-bind="text:Ingredient().Name, attr: {href: Ingredient().Url}"></a></td>
+			</tr>
+		</table>
+		<table class="edit" data-bind="foreach: Ingredients">
+			<tr class="ingredient">
+				<td class="amount">
+					<input type="number" data-bind="value:Quantity().Amount" />
+				</td>
+				<td class="unit">
+					<input type="text" data-bind="value:Quantity().Unit" />
+				</td>
+				<td class="name">
+					<input type="text" data-bind="value:Ingredient().Name" />
+				</td>
 			</tr>
 		</table>
 		<!-- /ko -->
@@ -91,7 +91,8 @@
 	</div>
 	<div class="columnLeft">
 		<img class="photo" alt="recipe" data-bind="attr: {src: Image.Url}" />
-		<div>Foto von
+		<div>
+			Foto von
 			<!--ko text: Image.Author-->
 			<!--/ko-->
 		</div>
@@ -110,7 +111,7 @@
 		<div class="menubar">
 			<div class="preview">
 				<button type="button" onclick="ShowRecipeEditor();">bearbeiten</button>
-			</div>			
+			</div>
 			<div class="edit">
 				<button type="button" onclick="HideRecipeEditor();">vorschau</button>
 				<button type="button" data-bind="event: {click: $parent.onRevert}">
@@ -118,7 +119,7 @@
 				</button>
 				<button type="button" data-bind="event: {click: $parent.onSave}">
 					<img alt="save" src="~/Content/icons/tango/22x22/actions/document-save.png" />
-				</button>				
+				</button>
 				<div class="messageLog"></div>
 			</div>
 		</div>

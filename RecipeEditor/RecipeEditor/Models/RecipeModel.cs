@@ -19,7 +19,7 @@ namespace RecipeEditor.Models
 
 		public class QuantityModel
 		{
-			public float Amount { get; set; }
+			public float? Amount { get; set; }
 			public string Unit { get; set; }
 		}
 

@@ -62,6 +62,7 @@ namespace RecipeEditor.Controllers
     											},
     										new RecipeModel.ComponentIngredientModel
     											{
+													Quantity = new RecipeModel.QuantityModel {Amount = null, Unit = null},
     												Ingredient = new RecipeModel.IngredientModel() {Name = "Salz", Url = new Uri("/Salz", UriKind.Relative)}
     											}
     									}
@@ -89,6 +90,7 @@ namespace RecipeEditor.Controllers
     											},
     										new RecipeModel.ComponentIngredientModel
     											{
+													Quantity = new RecipeModel.QuantityModel {Amount = null, Unit = null},
     												Ingredient = new RecipeModel.IngredientModel {Name = "Zimt", Url = new Uri("/Zimt", UriKind.Relative)}
     											}
     									}

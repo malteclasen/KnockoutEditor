@@ -9,9 +9,12 @@ function IngredientModel(data) {
 }
 
 function RecipeIngredientModel(data) {
-    this.Quantity = ko.observable();
-    if (data.Quantity)
-        this.Quantity(new QuantityModel(data.Quantity));
+	var self = this;
+	this.Quantity = ko.observable();
+	this.HasQuantity = ko.computed(function () {
+		return self.Quantity().Amount() !== null || self.Quantity().Unit() !== null;
+	}, this);
+    this.Quantity(new QuantityModel(data.Quantity));
     this.Ingredient = ko.observable();
     this.Ingredient(new IngredientModel(data.Ingredient));
 }
