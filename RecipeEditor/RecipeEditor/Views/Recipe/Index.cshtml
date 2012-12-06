@@ -63,7 +63,7 @@
 		</div>
 		<h3 class="contenteditable" data-bind="text: Title, event: {change: onUpdateTitle}"></h3>
 		<table class="preview" data-bind="foreach: Ingredients">
-			<tr class="ingredient">
+			<tr class="ingredient" data-bind="if: !IsEmpty()">
 				<td class="amount" data-bind="text:Quantity().Amount"></td>
 				<td class="unit" data-bind="text:Quantity().Unit"></td>
 				<td class="name"><a data-bind="text:Ingredient().Name, attr: {href: Ingredient().Url}"></a></td>
