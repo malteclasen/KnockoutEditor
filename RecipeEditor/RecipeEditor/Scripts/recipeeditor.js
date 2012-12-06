@@ -4,26 +4,69 @@
 }
 
 function IngredientModel(data) {
+	var self = this;
     this.Name = ko.observable(data.Name);
     this.Url = ko.observable(data.Url);
+
+    this.IsEmpty = ko.computed(function () {
+    	return (!self.Name()) && (!self.Url());
+    }, this);
 }
 
 function RecipeIngredientModel(data) {
 	var self = this;
 	this.Quantity = ko.observable();
-	this.HasQuantity = ko.computed(function () {
-		return self.Quantity().Amount() !== null || self.Quantity().Unit() !== null;
-	}, this);
     this.Quantity(new QuantityModel(data.Quantity));
     this.Ingredient = ko.observable();
     this.Ingredient(new IngredientModel(data.Ingredient));
+
+    this.HasQuantity = ko.computed(function () {
+    	return self.Quantity().Amount() !== null || self.Quantity().Unit() !== null;
+    }, this);
+    this.IsEmpty = ko.computed(function () {
+    	return (!self.HasQuantity()) && (self.Ingredient().IsEmpty());
+    }, this);
 }
 
 function ComponentModel(data) {
     var self = this;
     this.Title = ko.observable(data.Title);
     this.Preparation = ko.observable(data.Preparation);
+
+    this.addEmptyIngredient = function () {
+    	var emptyIngredient = new RecipeIngredientModel({ Quantity: { Amount: null, Unit: null }, Ingredient: { Name: null, Url: null } });
+    	self.Ingredients.push(emptyIngredient);
+    	return emptyIngredient;
+    };
+
     this.Ingredients = ko.observableArray();
+
+    this.LastIngredient = ko.computed(function () {
+    	if (self.Ingredients().length === 0)
+    		return null;
+    	return self.Ingredients()[self.Ingredients().length-1];
+    }, this);
+
+    this.LastIngredientSubscription = null;
+
+    this.LastIngredient.subscribe(function (newValue) {
+    	if (self.LastIngredientSubscription !== null) {
+    		self.LastIngredientSubscription.dispose();
+    	}
+
+    	var currentLastIngredient = newValue;
+    	if (currentLastIngredient === null)
+    		currentLastIngredient = self.addEmptyIngredient();
+    	if (!currentLastIngredient.IsEmpty())
+			currentLastIngredient = self.addEmptyIngredient();
+
+    	self.LastIngredientSubscription = currentLastIngredient.IsEmpty.subscribe(function (newValue) {
+    		if (!newValue) {
+				self.addEmptyIngredient();
+			}
+		}, this);
+    }, this);
+
     this.Ingredients($.map(data.Ingredients, function (item) { return new RecipeIngredientModel(item); }));
 
     this.onUpdatePreparation = function(model, event) {
