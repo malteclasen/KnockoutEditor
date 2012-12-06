@@ -21,7 +21,7 @@ function RecipeIngredientModel(data) {
     this.Ingredient(new IngredientModel(data.Ingredient));
 
     this.HasQuantity = ko.computed(function () {
-    	return self.Quantity().Amount() !== null || self.Quantity().Unit() !== null;
+    	return self.Quantity().Amount() || self.Quantity().Unit();
     }, this);
     this.IsEmpty = ko.computed(function () {
     	return (!self.HasQuantity()) && (self.Ingredient().IsEmpty());
