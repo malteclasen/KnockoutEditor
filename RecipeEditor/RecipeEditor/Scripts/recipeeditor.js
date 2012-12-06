@@ -33,7 +33,7 @@ function ComponentModel(data) {
     this.Title = ko.observable(data.Title);
     this.Preparation = ko.observable(data.Preparation);
 
-    this.addEmptyIngredient = function () {
+    this.AddEmptyIngredient = function () {
     	var emptyIngredient = new RecipeIngredientModel({ Quantity: { Amount: null, Unit: null }, Ingredient: { Name: null, Url: null } });
     	self.Ingredients.push(emptyIngredient);
     	return emptyIngredient;
@@ -56,13 +56,13 @@ function ComponentModel(data) {
 
     	var currentLastIngredient = newValue;
     	if (currentLastIngredient === null)
-    		currentLastIngredient = self.addEmptyIngredient();
+    		currentLastIngredient = self.AddEmptyIngredient();
     	if (!currentLastIngredient.IsEmpty())
-			currentLastIngredient = self.addEmptyIngredient();
+			currentLastIngredient = self.AddEmptyIngredient();
 
     	self.LastIngredientSubscription = currentLastIngredient.IsEmpty.subscribe(function (newValue) {
     		if (!newValue) {
-				self.addEmptyIngredient();
+				self.AddEmptyIngredient();
 			}
 		}, this);
     }, this);
@@ -85,6 +85,16 @@ function ComponentModel(data) {
     this.onFormatItalic = function(model, event) {
         contentEditor.formatItalic();
     };
+}
+
+function CategoryModel(data) {
+	var self = this;
+	this.Name = ko.observable(data.Name);
+	this.Url = ko.observable(data.Url);
+
+	this.IsEmpty = ko.computed(function () {
+		return (!self.Name()) && (!self.Url());
+	}, this);
 }
 
 function RecipeViewModel(initialData) {
@@ -132,17 +142,54 @@ function RecipeViewModel(initialData) {
     	self.data().Components.remove(model);
     }
 
-    //http://knockoutjs.com/documentation/plugins-mapping.html
+    this.AddEmptyCategory = function () {
+    	var emptyCategory = new CategoryModel({ Name: null, Url: null });
+    	self.data().Categories.push(emptyCategory);
+    	return emptyCategory;
+    };
+
+    this.LastCategory = ko.computed(function () {
+    	if (!self.data() || self.data().Categories().length === 0)
+    		return null;
+    	return self.data().Categories()[self.data().Categories().length - 1];
+    }, this);
+
+    this.LastCategorySubscription = null;
+
+    this.LastCategory.subscribe(function (newValue) {
+    	if (self.LastCategorySubscription !== null) {
+    		self.LastCategorySubscription.dispose();
+    	}
+
+    	var currentLastCategory = newValue;
+    	if (currentLastCategory === null)
+    		currentLastCategory = self.AddEmptyCategory();
+    	if (!currentLastCategory.IsEmpty())
+    		currentLastCategory = self.AddEmptyCategory();
+
+    	self.LastCategorySubscription = currentLastCategory.IsEmpty.subscribe(function (newValue) {
+    		if (!newValue) {
+    			self.AddEmptyCategory();
+    		}
+    	}, this);
+    }, this);
+
+     //http://knockoutjs.com/documentation/plugins-mapping.html
     var mapping = {
-        'Components': {
-            create: function(options) {
-                return new ComponentModel(options.data);
-            }
-            //,
-            //key: function(data) {
-            //	return ko.utils.unwrapObservable(data.id);
-            //}
-        }
+    	'Components': {
+    		create: function (options) {
+    			return new ComponentModel(options.data);
+    		}
+    	},
+    	'Categories': {
+    		create: function (options) {
+    			return new CategoryModel(options.data);
+    		}
+    	}
+    	//,
+    	//key: function(data) {
+    	//	return ko.utils.unwrapObservable(data.id);
+    	//}
     };
 
     //self.revert(onLoaded);
@@ -151,7 +198,7 @@ function RecipeViewModel(initialData) {
 
     self.json = ko.computed(function () {
         return ko.mapping.toJSON(self.data);
-    }, this); 
+    }, this);
 }
 
 function ShowRecipeEditor() {    

@@ -10,7 +10,7 @@
 		<ul>
 			@foreach (var category in Model.Categories)
 			{
-				<li>@category</li>
+				<li><a href="@category.Url">@category.Name</a></li>
 			}
 		</ul>
 		<h2>Zutaten</h2>
@@ -18,14 +18,16 @@
 		{
 			<h3>@component.Title</h3>
 			<table>
-				@foreach (var ingredient in component.Ingredients)
-				{
-					<tr class="ingredient">
-						<td class="amount">@ingredient.Quantity.Amount</td>
-						<td class="unit">@ingredient.Quantity.Unit</td>
-						<td class="name"><a href="@ingredient.Ingredient.Url">@ingredient.Ingredient.Name</a></td>
-					</tr>
-				}
+				<tbody>
+					@foreach (var ingredient in component.Ingredients)
+					{
+						<tr class="ingredient">
+							<td class="amount">@ingredient.Quantity.Amount</td>
+							<td class="unit">@ingredient.Quantity.Unit</td>
+							<td class="name"><a href="@ingredient.Ingredient.Url">@ingredient.Ingredient.Name</a></td>
+						</tr>
+					}
+				</tbody>
 			</table>
 		}
 	</div>
@@ -51,8 +53,13 @@
 	<h1 class="contenteditable" data-bind="text: Title, event: {change: $parent.onUpdateTitle}"></h1>
 	<div class="columnRight">
 		<h3>Kategorien</h3>
-		<ul data-bind="foreach: Categories">
-			<li data-bind="text: $data"></li>
+		<ul class="preview" data-bind="foreach: Categories">
+			<!-- ko if:!IsEmpty() -->
+			<li><a data-bind="text:Name, attr: {href:Url}"></a></li>
+			<!-- /ko -->
+		</ul>
+		<ul class="edit" data-bind="foreach: Categories">
+			<li><input type="text" data-bind="value:Name" /></li>
 		</ul>
 		<h2>Zutaten</h2>
 		<!-- ko foreach: Components -->
@@ -62,25 +69,31 @@
 			</button>
 		</div>
 		<h3 class="contenteditable" data-bind="text: Title, event: {change: onUpdateTitle}"></h3>
-		<table class="preview" data-bind="foreach: Ingredients">
-			<tr class="ingredient" data-bind="if: !IsEmpty()">
-				<td class="amount" data-bind="text:Quantity().Amount"></td>
-				<td class="unit" data-bind="text:Quantity().Unit"></td>
-				<td class="name"><a data-bind="text:Ingredient().Name, attr: {href: Ingredient().Url}"></a></td>
-			</tr>
+		<table class="preview">
+			<tbody data-bind="foreach: Ingredients">
+				<!-- ko if:!IsEmpty() -->
+				<tr class="ingredient">
+					<td class="amount" data-bind="text:Quantity().Amount"></td>
+					<td class="unit" data-bind="text:Quantity().Unit"></td>
+					<td class="name"><a data-bind="text:Ingredient().Name, attr: {href: Ingredient().Url}"></a></td>
+				</tr>
+				<!-- /ko -->
+			</tbody>
 		</table>
-		<table class="edit" data-bind="foreach: Ingredients">
-			<tr class="ingredient">
-				<td class="amount">
-					<input type="number" data-bind="value:Quantity().Amount" />
-				</td>
-				<td class="unit">
-					<input type="text" data-bind="value:Quantity().Unit" />
-				</td>
-				<td class="name">
-					<input type="text" data-bind="value:Ingredient().Name" />
-				</td>
-			</tr>
+		<table class="edit">
+			<tbody data-bind="foreach: Ingredients">
+				<tr class="ingredient">
+					<td class="amount">
+						<input type="number" data-bind="value:Quantity().Amount" />
+					</td>
+					<td class="unit">
+						<input type="text" data-bind="value:Quantity().Unit" />
+					</td>
+					<td class="name">
+						<input type="text" data-bind="value:Ingredient().Name" />
+					</td>
+				</tr>
+			</tbody>
 		</table>
 		<!-- /ko -->
 		<div class="toolbar edit">
