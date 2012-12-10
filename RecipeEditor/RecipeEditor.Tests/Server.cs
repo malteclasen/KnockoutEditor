@@ -42,6 +42,7 @@ namespace RecipeEditor.Tests
 				_iisProcess.Kill();
 			}
 			_iisProcess.Dispose();
+			GC.SuppressFinalize(this);
 		}
 
 		~Server()

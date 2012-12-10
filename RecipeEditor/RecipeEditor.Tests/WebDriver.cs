@@ -28,6 +28,7 @@ namespace RecipeEditor.Tests
 		{
 			_driver.Quit();
 			_driver.Dispose();
+			GC.SuppressFinalize(this);
 		}
 
 		~WebDriver()
