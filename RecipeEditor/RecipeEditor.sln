@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 11
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeEditor", "RecipeEditor\RecipeEditor.csproj", "{91120DC9-7BA2-4D23-BFD5-FF85173A8D82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeEditor.Tests", "RecipeEditor.Tests\RecipeEditor.Tests.csproj", "{7095FCCB-1B3B-4CCC-BE45-7877D0127795}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{91120DC9-7BA2-4D23-BFD5-FF85173A8D82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91120DC9-7BA2-4D23-BFD5-FF85173A8D82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91120DC9-7BA2-4D23-BFD5-FF85173A8D82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7095FCCB-1B3B-4CCC-BE45-7877D0127795}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7095FCCB-1B3B-4CCC-BE45-7877D0127795}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7095FCCB-1B3B-4CCC-BE45-7877D0127795}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7095FCCB-1B3B-4CCC-BE45-7877D0127795}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
