@@ -45,6 +45,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="TechTalk.SpecFlow">
+      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
     <Reference Include="WebDriver, Version=2.27.1.0, Culture=neutral, PublicKeyToken=1c2bd1631853048f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Selenium.WebDriver.2.27.1\lib\net40\WebDriver.dll</HintPath>
@@ -68,8 +71,17 @@
   </Choose>
   <ItemGroup>
     <Compile Include="IsolationMode.cs" />
+    <Compile Include="RecipeViewer.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecipeViewer.feature</DependentUpon>
+    </Compile>
+    <Compile Include="RecipeViewerSteps.cs" />
     <Compile Include="Server.cs" />
+    <Compile Include="UriExtension.cs" />
     <Compile Include="WebDriver.cs" />
+    <Compile Include="WebUiContext.cs" />
+    <Compile Include="WebUiHooks.cs" />
     <Compile Include="WebUiTestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecipeEditorTest.cs" />
@@ -83,6 +95,10 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="RecipeViewer.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>RecipeViewer.feature.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

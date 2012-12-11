@@ -12,8 +12,8 @@ namespace RecipeEditor.Tests
 		[TestMethod]
 		public void ShowsLinkToRecipeOnHomepage()
 		{
-			WebDriver.Navigate().GoToUrl(GetAbsoluteUrl("/"));
-			var a = WebDriver.FindElement(By.TagName("a"));
+			Web.Navigate().GoToUrl(WebUiContext.RootUrl);
+			var a = Web.FindElement(By.TagName("a"));
 
 			a.Text.Should().Be("Rezept");
 		}
