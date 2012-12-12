@@ -9,15 +9,6 @@ using OpenQA.Selenium;
 
 namespace RecipeEditor.Tests
 {
-	public class HtmlGetter
-	{
-		public static XDocument Get(RemoteWebDriver web)
-		{
-			var innerHtml = web.ExecuteScript("return document.documentElement.innerHTML;", null);
-			return XDocument.Parse("<html>" + innerHtml + "</html>");
-		}
-	}
-
 	[Binding]
 	public class RecipeViewerSteps
 	{
@@ -26,14 +17,14 @@ namespace RecipeEditor.Tests
 			get { return WebUiContext.WebDriver; }
 		}
 
-		[Given(@"I visit the homepage")]
-		public void GivenIVisitTheHomepage()
+		[Given(@"I am on the homepage")]
+		public void GivenIAmOnTheHomepage()
 		{
 			Web.Navigate().GoToUrl(WebUiContext.RootUrl);
 		}
 
-		[Given(@"I visit the ""(.*)"" recipe page")]
-		public void GivenIVisitTheRecipePage(string p0)
+		[Given(@"I am on the ""(.*)"" recipe page")]
+		public void GivenIAmOnTheRecipePage(string p0)
 		{
 			Web.Navigate().GoToUrl(WebUiContext.RootUrl.Append("/Recipe"));
 		}

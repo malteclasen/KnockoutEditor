@@ -71,6 +71,12 @@
   </Choose>
   <ItemGroup>
     <Compile Include="IsolationMode.cs" />
+    <Compile Include="RecipeEditor.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecipeEditor.feature</DependentUpon>
+    </Compile>
+    <Compile Include="RecipeEditorSteps.cs" />
     <Compile Include="RecipeViewer.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -95,6 +101,10 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="RecipeEditor.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>RecipeEditor.feature.cs</LastGenOutput>
+    </None>
     <None Include="RecipeViewer.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>RecipeViewer.feature.cs</LastGenOutput>

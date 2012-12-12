@@ -5,12 +5,12 @@
 
 @mytag
 Scenario: Navigate to the recipe
-	Given I visit the homepage
+	Given I am on the homepage
 	When I follow the "Rezept" link
 	Then the recipe for "Streuselkuchen" should be visible
 
 Scenario: View the recipe
-	Given I visit the "Streuselkuchen" recipe page
+	Given I am on the "Streuselkuchen" recipe page
 	Then there should be the component "Teig"
 	And there should be the component "Streusel"
 	And the component "Teig" should contain 400 g Mehl
