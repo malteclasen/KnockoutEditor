@@ -203,6 +203,16 @@ this.ScenarioSetup(scenarioInfo);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Component", ((string[])(null)));
 #line 45
 this.ScenarioSetup(scenarioInfo);
+#line 46
+ testRunner.Given("I am on the \"Streuselkuchen\" recipe page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 47
+ testRunner.And("I am in edit mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 48
+ testRunner.When("I click on the add component button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 49
+ testRunner.Then("there should be 3 components", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 50
+ testRunner.And("the title of the third component should be \"neu\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -213,8 +223,18 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void RemoveComponent()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove Component", ((string[])(null)));
-#line 47
+#line 52
 this.ScenarioSetup(scenarioInfo);
+#line 53
+ testRunner.Given("I am on the \"Streuselkuchen\" recipe page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 54
+ testRunner.And("I am in edit mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 55
+ testRunner.When("I click on the first remove component button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 56
+ testRunner.Then("there should be 1 components", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 57
+ testRunner.And("the title of the first component should be \"Streusel\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -225,8 +245,46 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void AddCategory()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Category", ((string[])(null)));
-#line 49
+#line 59
 this.ScenarioSetup(scenarioInfo);
+#line 60
+ testRunner.Given("I am on the \"Streuselkuchen\" recipe page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 61
+ testRunner.And("I am in edit mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 62
+ testRunner.When("I click on the empty category field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 63
+ testRunner.And("I type \"Blechkuchen\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 64
+ testRunner.Then("there should be 3 categories", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 65
+ testRunner.And("the title of the third category should be \"Blechkuchen\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Dynamically Add Category Fields")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "RecipeEditor")]
+        public virtual void DynamicallyAddCategoryFields()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Dynamically Add Category Fields", ((string[])(null)));
+#line 67
+this.ScenarioSetup(scenarioInfo);
+#line 68
+ testRunner.Given("I am on the \"Streuselkuchen\" recipe page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 69
+ testRunner.And("I am in edit mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 70
+ testRunner.When("I click on the empty category field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 71
+ testRunner.And("I type \"Blechkuchen\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 72
+ testRunner.And("I click somewhere else", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 73
+ testRunner.Then("there should be 4 category fields", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 74
+ testRunner.And("there should be an empty category field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -237,44 +295,104 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void RemoveCategory()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove Category", ((string[])(null)));
-#line 51
+#line 76
 this.ScenarioSetup(scenarioInfo);
+#line 77
+ testRunner.Given("I am on the \"Streuselkuchen\" recipe page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 78
+ testRunner.And("I am in edit mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 79
+ testRunner.When("I click on the first category field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 80
+ testRunner.And("I clear the text", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 81
+ testRunner.Then("there should be 1 categories", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 82
+ testRunner.And("the title of the first category should be \"Kleingebäck\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add Ingredient to new Category")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add Ingredient to new Component")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "RecipeEditor")]
-        public virtual void AddIngredientToNewCategory()
+        public virtual void AddIngredientToNewComponent()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Ingredient to new Category", ((string[])(null)));
-#line 53
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Ingredient to new Component", ((string[])(null)));
+#line 84
 this.ScenarioSetup(scenarioInfo);
+#line 85
+ testRunner.Given("I am on the \"Streuselkuchen\" recipe page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 86
+ testRunner.And("I am in edit mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 87
+ testRunner.When("I click on the add component button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 88
+ testRunner.And("I set the empty ingredient field of the component \"neu\" to 30 ml Wasser", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 89
+ testRunner.Then("the component \"neu\" should contain 30 ml Wasser", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add Ingredient to existing Category")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add Ingredient to existing Component")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "RecipeEditor")]
-        public virtual void AddIngredientToExistingCategory()
+        public virtual void AddIngredientToExistingComponent()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Ingredient to existing Category", ((string[])(null)));
-#line 55
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Ingredient to existing Component", ((string[])(null)));
+#line 91
 this.ScenarioSetup(scenarioInfo);
+#line 92
+ testRunner.Given("I am on the \"Streuselkuchen\" recipe page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 93
+ testRunner.And("I am in edit mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 94
+ testRunner.When("I set the empty ingredient field of the component \"Teig\" to 30 ml Wasser", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 95
+ testRunner.Then("the component \"Teig\" should contain 30 ml Wasser", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Remove Ingredient from Category")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Dynamically Add Ingredient Fields")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "RecipeEditor")]
-        public virtual void RemoveIngredientFromCategory()
+        public virtual void DynamicallyAddIngredientFields()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove Ingredient from Category", ((string[])(null)));
-#line 57
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Dynamically Add Ingredient Fields", ((string[])(null)));
+#line 97
 this.ScenarioSetup(scenarioInfo);
+#line 98
+ testRunner.Given("I am on the \"Streuselkuchen\" recipe page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 99
+ testRunner.And("I am in edit mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 100
+ testRunner.When("I set the empty ingredient field of the component \"Teig\" to 30 ml Wasser", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 101
+ testRunner.Then("there should be 9 ingredient fields in the component \"Teig\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 102
+ testRunner.Then("there should be an empty ingredient field in the component \"Teig\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Remove Ingredient from Component")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "RecipeEditor")]
+        public virtual void RemoveIngredientFromComponent()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove Ingredient from Component", ((string[])(null)));
+#line 104
+this.ScenarioSetup(scenarioInfo);
+#line 105
+ testRunner.Given("I am on the \"Streuselkuchen\" recipe page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 106
+ testRunner.And("I am in edit mode", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 107
+ testRunner.When("I clear the second ingredient field of the component \"Teig\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 108
+ testRunner.Then("the component \"Teig\" should not contain Margarine", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
