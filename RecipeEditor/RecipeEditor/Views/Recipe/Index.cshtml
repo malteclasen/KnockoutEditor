@@ -59,7 +59,7 @@
 			<!-- /ko -->
 		</ul>
 		<ul class="edit" data-bind="foreach: Categories">
-			<li><input type="text" data-bind="value:Name" /></li>
+			<li><input type="text" data-bind="value:Name, valueUpdate:'afterkeydown', event:{change: $root.onChangeCategory}" /></li>
 		</ul>
 		<h2>Zutaten</h2>
 		<!-- ko foreach: Components -->

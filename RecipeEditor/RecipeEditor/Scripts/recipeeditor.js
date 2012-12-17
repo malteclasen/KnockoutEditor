@@ -174,6 +174,15 @@ function RecipeViewModel(initialData) {
     	}, this);
     }, this);
 
+    this.onChangeCategory = function (model, event) {
+    	if (model.Name()) {
+    		console.log('update ' + model.Name());
+    	}
+    	else {
+    		self.data().Categories.remove(model);
+    	}
+    }
+
      //http://knockoutjs.com/documentation/plugins-mapping.html
     var mapping = {
     	'Components': {

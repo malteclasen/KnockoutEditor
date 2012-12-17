@@ -69,7 +69,6 @@ Scenario: Dynamically Add Category Fields
 	And I am in edit mode
 	When I click on the empty category field
 	And I type "Blechkuchen"
-	And I click somewhere else
 	Then there should be 4 category fields 
 	And there should be an empty category field
 

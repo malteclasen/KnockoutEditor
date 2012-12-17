@@ -279,7 +279,7 @@ namespace RecipeEditor.Tests
 		{
 			EnsureIsInEdit();
 			FindDisplayedList(By.XPath(
-				string.Format("//form[@id='RecipeEditor']//h2[.='Zutaten']/following-sibling::h3[.='{0}']/following-sibling::table[@class='edit']/tbody/tr", componentName)))
+				string.Format("//form[@id='RecipeEditor']//h2[.='Zutaten']/following-sibling::h3[.='{0}']/following-sibling::table[@class='edit'][1]/tbody/tr", componentName)))
 				.Should().HaveCount(num);
 		}
 
@@ -291,9 +291,9 @@ namespace RecipeEditor.Tests
 			var found = false;
 			foreach (var row in rows)
 			{
-				var amountField = row.FindElement(By.XPath(row + "/td[1]/input"));
-				var unitField = row.FindElement(By.XPath(row + "/td[2]/input"));
-				var ingredientField = row.FindElement(By.XPath(row + "/td[3]/input"));
+				var amountField = row.FindElement(By.XPath("td[1]/input"));
+				var unitField = row.FindElement(By.XPath("td[2]/input"));
+				var ingredientField = row.FindElement(By.XPath("td[3]/input"));
 				if (string.IsNullOrEmpty(amountField.GetAttribute("value")) && string.IsNullOrEmpty(unitField.GetAttribute("value")) && string.IsNullOrEmpty(ingredientField.GetAttribute("value")))
 					found = true;
 			}
@@ -303,7 +303,8 @@ namespace RecipeEditor.Tests
 		[When(@"I clear the second ingredient field of the component ""(.*)""")]
 		public void WhenIClearTheSecondIngredientFieldOfTheComponent(string componentName)
 		{
-			var row = string.Format("//form[@id='RecipeEditor']//h2[.='Zutaten']/following-sibling::h3[.='{0}']/following-sibling::table[@class='edit']/tbody/tr[2]", componentName);
+			EnsureIsInEdit();
+			var row = string.Format("//form[@id='RecipeEditor']//h2[.='Zutaten']/following-sibling::h3[.='{0}']/following-sibling::table[@class='edit'][1]/tbody/tr[2]", componentName);
 			var amountField = FindDisplayed(By.XPath(row + "/td[1]/input"));
 			var unitField = FindDisplayed(By.XPath(row + "/td[2]/input"));
 			var ingredientField = FindDisplayed(By.XPath(row + "/td[3]/input"));
@@ -317,7 +318,7 @@ namespace RecipeEditor.Tests
 		{
 			EnsureIsInPreview();
 			FindDisplayedList(By.XPath(
-				string.Format("//form[@id='RecipeEditor']//h2[.='Zutaten']/following-sibling::h3[.='{0}']/following-sibling::table[@class='preview']/tbody/tr/td[.='Margarine']", componentName)
+				string.Format("//form[@id='RecipeEditor']//h2[.='Zutaten']/following-sibling::h3[.='{0}']/following-sibling::table[@class='preview'][1]/tbody/tr/td[.='Margarine']", componentName)
 				)).Should().BeEmpty();
 		}
 
