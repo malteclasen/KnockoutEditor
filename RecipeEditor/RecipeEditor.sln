@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeEditor", "RecipeEdito
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeEditor.Tests", "RecipeEditor.Tests\RecipeEditor.Tests.csproj", "{7095FCCB-1B3B-4CCC-BE45-7877D0127795}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeEditor.JsTests", "RecipeEditor.JsTests\RecipeEditor.JsTests.csproj", "{78FC6D22-A2A9-41E8-BAE4-E5B6E54EF9BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{7095FCCB-1B3B-4CCC-BE45-7877D0127795}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7095FCCB-1B3B-4CCC-BE45-7877D0127795}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7095FCCB-1B3B-4CCC-BE45-7877D0127795}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78FC6D22-A2A9-41E8-BAE4-E5B6E54EF9BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78FC6D22-A2A9-41E8-BAE4-E5B6E54EF9BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78FC6D22-A2A9-41E8-BAE4-E5B6E54EF9BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78FC6D22-A2A9-41E8-BAE4-E5B6E54EF9BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
