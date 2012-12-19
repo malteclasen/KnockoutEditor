@@ -12,6 +12,7 @@ namespace RecipeEditor.JsTests
 		public static void RegisterRoutes(RouteCollection routes)
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+			routes.IgnoreRoute("{*alljs}", new { alljs = @".*\.js(/.*)?" });
 
 			routes.MapRoute(
 				name: "Default",
