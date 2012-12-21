@@ -3,21 +3,25 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>@ViewBag.Title</title>
 	@Styles.Render("~/Content/default")
 	@Styles.Render("~/Content/recipe")
 	@Styles.Render("~/Content/fileuploader")
-	@Scripts.Render("~/Scripts/default")
+
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 </head>
 <body>
-	<div class="center">
-		<header>
-			Knockout Editor Demo
-		</header>
-		<div class="content">
-			@RenderBody()
+	<div class="container">
+		<div class="page-header">
+			<header>Knockout Editor Demo</header>
 		</div>
+		@RenderBody()
 	</div>
+	@Scripts.Render("~/Scripts/default")
+	@RenderSection("Scripts", required:false)
 </body>
 </html>

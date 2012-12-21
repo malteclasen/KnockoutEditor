@@ -46,7 +46,7 @@ namespace RecipeEditor.Tests
 		{
 			get
 			{
-				return Web.FindElement(By.XPath("//*[@class='preview']")).Displayed ? "preview" : "edit";
+				return Web.FindElement(By.XPath("//*[contains(@class,'preview')]")).Displayed ? "preview" : "edit";
 			}
 		}
 
@@ -86,7 +86,7 @@ namespace RecipeEditor.Tests
 		public void ThenTheComponentShouldContain(string component, float amount, string unit, string ingredientName)
 		{
 			EnsureIsInViewOrPreview();
-			var classFilter = IsInView ? "" : string.Format("[@class='{0}']", EditClass);
+			var classFilter = IsInView ? "" : string.Format("[contains(@class, '{0}')]", EditClass);
 			Web.FindElements(By.XPath(
 				string.Format(ViewXPathPrefix + "//h2[.='Zutaten']/following-sibling::h3[.='{0}']/following-sibling::table{4}//tr[td[1][.='{1}'] and td[2][.='{2}'] and td[3][.='{3}']]", component, amount, unit, ingredientName, classFilter)
 				)).Should().NotBeEmpty();
@@ -96,7 +96,7 @@ namespace RecipeEditor.Tests
 		public void ThenTheComponentShouldAnUnspecifiedAmountOf(string component, string ingredientName)
 		{
 			EnsureIsInViewOrPreview();
-			var classFilter = IsInView ? "" : string.Format("[@class='{0}']", EditClass);
+			var classFilter = IsInView ? "" : string.Format("[contains(@class, '{0}')]", EditClass);
 			Web.FindElements(By.XPath(
 				string.Format(ViewXPathPrefix + "//h2[.='Zutaten']/following-sibling::h3[.='{0}']/following-sibling::table{2}//tr[td[1][.=''] and td[2][.=''] and td[3][.='{1}']]", component, ingredientName, classFilter)
 				)).Should().NotBeEmpty();

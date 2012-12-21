@@ -3,9 +3,25 @@
 @{
 	ViewBag.Title = @Model.Title;
 }
-<div id="Recipe">
+<div id="Recipe" class="row">
+	<div class="span12">
 	<h1>@Model.Title</h1>
-	<div class="columnRight">
+		</div>
+	<div class="span8">
+		<img class="photo" src="@if (Model.Image != null)
+						  {@Model.Image.Url}
+						  else
+						  {<text>~/Content/icons/tango/32x32/status/image-missing.png</text>}" alt="recipe"/>
+		@if (Model.Image != null)
+		{ <div>Foto von @Model.Image.Author</div>	}
+		<h2>Zubereitung</h2>
+		@foreach (var component in Model.Components)
+		{
+			<h3>@component.Title</h3>
+			<div>@Html.Raw(component.Preparation)</div>
+		}
+	</div>
+	<div class="span4">
 		<h3>Kategorien</h3>
 		<ul>
 			@foreach (var category in Model.Categories)
@@ -17,7 +33,7 @@
 		@foreach (var component in Model.Components)
 		{
 			<h3>@component.Title</h3>
-			<table>
+			<table class="table table-condensed">
 				<tbody>
 					@foreach (var ingredient in component.Ingredients)
 					{
@@ -31,27 +47,39 @@
 			</table>
 		}
 	</div>
-	<div class="columnLeft">
-		<img class="photo" src="@if (Model.Image != null)
-						  {@Model.Image.Url}
-						  else
-						  {<text>~/Content/icons/tango/32x32/status/image-missing.png</text>}" alt="recipe"/>
-		@if (Model.Image != null)
-		{ <div>Foto von @Model.Image.Author</div>	}
-		<h2>Zubereitung</h2>
-		@foreach (var component in Model.Components)
-		{
-			<h3>@component.Title</h3>
-			<div>@Html.Raw(component.Preparation)</div>
-		}
-		<div class="menubar">
-			<button type="button" onclick="InitRecipeEditor()">bearbeiten</button>
+			<div class="span12">
+				<div class="menubar">
+			<button type="button" class="btn" onclick="InitRecipeEditor()">bearbeiten</button>
+					</div>
 		</div>
-	</div>
+
 </div>
-<form action="#" id="RecipeEditor" data-bind="with: data" style="display: none;">
+<form action="#" id="RecipeEditor" data-bind="with: data" style="display: none;" class="row">
+	<div class="span12">
 	<h1 class="contenteditable" data-bind="text: Title, event: {change: $parent.onUpdateTitle}"></h1>
-	<div class="columnRight">
+		</div>
+	<div class="span8">
+		<img class="photo" alt="recipe" data-bind="attr: {src: Image.Url}" />
+		<div>
+			Foto von
+			<!--ko text: Image.Author-->
+			<!--/ko-->
+		</div>
+		<h2>Zubereitung</h2>
+		<!-- ko foreach: Components -->
+		<h3 class="contenteditable" data-bind="text: Title, event: {change: onUpdateTitle}"></h3>
+		<div class="toolbar forContentEditable edit">
+			<button type="button" class="btn" data-bind="event: { click: onFormatBold }">
+				<img src="~/Content/icons/tango/22x22/actions/format-text-bold.png" /></button>
+			<button type="button" class="btn" data-bind="event: { click: onFormatItalic }">
+				<img src="~/Content/icons/tango/22x22/actions/format-text-italic.png" /></button>
+		</div>
+		<div class="contenteditable" data-bind="html: Preparation, event: {change: onUpdatePreparation}">
+		</div>
+		<!-- /ko -->
+	</div>
+	
+	<div class="span4">
 		<h3>Kategorien</h3>
 		<ul class="preview" data-bind="foreach: Categories">
 			<!-- ko if:!IsEmpty() -->
@@ -64,12 +92,12 @@
 		<h2>Zutaten</h2>
 		<!-- ko foreach: Components -->
 		<div class="toolbar edit">
-			<button type="button" data-bind="event: { click: $root.onRemoveComponent }">
+			<button type="button" class="btn" data-bind="event: { click: $root.onRemoveComponent }">
 				<img alt="list-remove" src="~/Content/icons/tango/22x22/actions/list-remove.png" />
 			</button>
 		</div>
 		<h3 class="contenteditable" data-bind="text: Title, event: {change: onUpdateTitle}"></h3>
-		<table class="preview">
+		<table class="preview table table-condensed">
 			<tbody data-bind="foreach: Ingredients">
 				<!-- ko if:!IsEmpty() -->
 				<tr class="ingredient">
@@ -80,65 +108,45 @@
 				<!-- /ko -->
 			</tbody>
 		</table>
-		<table class="edit">
+		<table class="edit table  table-condensed">
 			<tbody data-bind="foreach: Ingredients">
 				<tr class="ingredient">
-					<td class="amount">
-						<input type="number" data-bind="value:Quantity().Amount" />
-					</td>
-					<td class="unit">
-						<input type="text" data-bind="value:Quantity().Unit" />
-					</td>
-					<td class="name">
-						<input type="text" data-bind="value:Ingredient().Name" />
-					</td>
+					<td class="amount"><input type="number" data-bind="value:Quantity().Amount" /></td>
+					<td class="unit"><input type="text" data-bind="value:Quantity().Unit" /></td>
+					<td class="name"><input type="text" data-bind="value:Ingredient().Name" /></td>
 				</tr>
 			</tbody>
 		</table>
 		<!-- /ko -->
 		<div class="toolbar edit">
-			<button type="button" data-bind="event: { click: $parent.onAddComponent }">
+			<button type="button" class="btn" data-bind="event: { click: $parent.onAddComponent }">
 				<img alt="list-add" src="~/Content/icons/tango/22x22/actions/list-add.png" />
 			</button>
 		</div>
 	</div>
-	<div class="columnLeft">
-		<img class="photo" alt="recipe" data-bind="attr: {src: Image.Url}" />
-		<div>
-			Foto von
-			<!--ko text: Image.Author-->
-			<!--/ko-->
-		</div>
-		<h2>Zubereitung</h2>
-		<!-- ko foreach: Components -->
-		<h3 class="contenteditable" data-bind="text: Title, event: {change: onUpdateTitle}"></h3>
-		<div class="toolbar forContentEditable edit">
-			<button type="button" data-bind="event: { click: onFormatBold }">
-				<img src="~/Content/icons/tango/22x22/actions/format-text-bold.png" /></button>
-			<button type="button" data-bind="event: { click: onFormatItalic }">
-				<img src="~/Content/icons/tango/22x22/actions/format-text-italic.png" /></button>
-		</div>
-		<div class="contenteditable" data-bind="html: Preparation, event: {change: onUpdatePreparation}">
-		</div>
-		<!-- /ko -->
-		<div class="menubar">
+		<div class="span12">
+			<div class="menubar">
 			<div class="preview">
-				<button type="button" onclick="ShowRecipeEditor();">bearbeiten</button>
+				<button type="button" class="btn" onclick="ShowRecipeEditor();">bearbeiten</button>
 			</div>
 			<div class="edit">
-				<button type="button" onclick="HideRecipeEditor();">vorschau</button>
-				<button type="button" data-bind="event: {click: $parent.onRevert}">
+				<button type="button" class="btn" onclick="HideRecipeEditor();">vorschau</button>
+				<button type="button" class="btn" data-bind="event: {click: $parent.onRevert}">
 					<img alt="revert" src="~/Content/icons/tango/22x22/actions/edit-undo.png" />
 				</button>
-				<button type="button" data-bind="event: {click: $parent.onSave}">
+				<button type="button" class="btn" data-bind="event: {click: $parent.onSave}">
 					<img alt="save" src="~/Content/icons/tango/22x22/actions/document-save.png" />
 				</button>
 				<div class="messageLog"></div>
 			</div>
+				</div>
 		</div>
-	</div>
+
 </form>
-@Scripts.Render("~/Scripts/recipe")
-<script type="text/javascript">
-	InitRecipeViewModel(@Html.Raw(Model.Json));
-</script>
+
+@section Scripts {
+	@Scripts.Render("~/Scripts/recipe")
+	<script type="text/javascript">
+		InitRecipeViewModel(@Html.Raw(Model.Json));
+	</script>
+}

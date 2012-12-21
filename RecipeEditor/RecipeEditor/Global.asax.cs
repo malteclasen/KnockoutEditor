@@ -84,11 +84,13 @@ namespace RecipeEditor
 				.Include("~/Scripts/jquery.validate.js")
 				.Include("~/Scripts/jquery.validate.unobtrusive.js")
 				.Include("~/Scripts/modernizr-2.6.2.js")
+				.Include("~/Scripts/bootstrap*")
 				.Include("~/Scripts/richtexteditor.js");
 			BundleTable.Bundles.Add(scripts);
 
 			var styles = new Bundle("~/Content/default")
-				.IncludeDirectory("~/Content/themes/base/minified", "*.css")
+				.Include("~/Content/bootstrap.css", "~/Content/bootstrap-responsive.css")
+				//.IncludeDirectory("~/Content/themes/base/minified", "*.css")
 				.Include("~/Content/Site.less");
 			styles.Transforms.Add(new LessTransform());
 			styles.Transforms.Add(new CssMinify());

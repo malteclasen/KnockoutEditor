@@ -1,46 +1,61 @@
 ﻿#Recipe, #RecipeEditor {
 
-	.columnRight {
-		width: 290px;
-		float: right;
-		position: relative;
-	}
-
-	.columnLeft {
-		width: 580px;
+	.span4, .span8 {
 		position: relative;
 	}
 
 	.photo {
-		width: 100%;	
+		width: 100%;
 	}
 
-	.ingredient {
-		td {
-			height: 26px;
-		}
-		.amount {
-			width: 50px;
-			padding-right: 0.5em;
-			text-align: right;
+	div.ingredient input {
+		width: 90%;
+	}
 
+	tr.ingredient {
+		.amount {
+			width: 20%;
+			text-align: right;
+			padding-right: 0.5em;
+		}
+
+		.unit {
+			width: 10%;
+			padding-right: 0.5em;
+		}
+	}
+
+	.edit tr.ingredient {
+		.amount {
+			text-align: right;
 			input {
-				width: 50px;
+
+				width: 80%;
+			}
+			input::-webkit-outer-spin-button,
+			input::-webkit-inner-spin-button {
+				display: none;
 			}
 		}
 
 		.unit {
-			width: 20px;
-			padding-right: 0.5em;
-
+			width: 20%;
 			input {
-				width: 20px;
+				width: 80%;
 			}
 		}
 
 		.name {
-			width: 500px;
+			input {
+				width: 90%;
+			}
 		}
+		td {
+			border-top: none;
 
+			input {
+				margin-bottom: 0;
+			}
+		}
 	}
 }

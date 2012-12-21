@@ -258,7 +258,7 @@ namespace RecipeEditor.Tests
 		[When(@"I set the empty ingredient field of the component ""(.*)"" to (.*) (.*) (.*)")]
 		public void WhenISetTheEmptyIngredientFieldOfTheComponentTo(string componentName, string amount, string unit, string ingredientName)
 		{
-			var rows = FindDisplayedList(By.XPath(string.Format("//form[@id='RecipeEditor']//h2[.='Zutaten']/following-sibling::h3[.='{0}']/following-sibling::table[@class='edit']/tbody/tr", componentName)));
+			var rows = FindDisplayedList(By.XPath(string.Format("//form[@id='RecipeEditor']//h2[.='Zutaten']/following-sibling::h3[.='{0}']/following-sibling::table[contains(@class, 'edit')]/tbody/tr", componentName)));
 			foreach (var row in rows)
 			{
 				var amountField = row.FindElement(By.XPath("td[1]/input"));
@@ -279,7 +279,7 @@ namespace RecipeEditor.Tests
 		{
 			EnsureIsInEdit();
 			FindDisplayedList(By.XPath(
-				string.Format("//form[@id='RecipeEditor']//h2[.='Zutaten']/following-sibling::h3[.='{0}']/following-sibling::table[@class='edit'][1]/tbody/tr", componentName)))
+				string.Format("//form[@id='RecipeEditor']//h2[.='Zutaten']/following-sibling::h3[.='{0}']/following-sibling::table[contains(@class, 'edit')][1]/tbody/tr", componentName)))
 				.Should().HaveCount(num);
 		}
 
@@ -287,7 +287,7 @@ namespace RecipeEditor.Tests
 		public void ThenThereShouldBeAnEmptyIngredientFieldInTheComponent(string componentName)
 		{
 			EnsureIsInEdit();
-			var rows = FindDisplayedList(By.XPath(string.Format("//form[@id='RecipeEditor']//h2[.='Zutaten']/following-sibling::h3[.='{0}']/following-sibling::table[@class='edit']/tbody/tr", componentName)));
+			var rows = FindDisplayedList(By.XPath(string.Format("//form[@id='RecipeEditor']//h2[.='Zutaten']/following-sibling::h3[.='{0}']/following-sibling::table[contains(@class, 'edit')]/tbody/tr", componentName)));
 			var found = false;
 			foreach (var row in rows)
 			{
@@ -304,7 +304,7 @@ namespace RecipeEditor.Tests
 		public void WhenIClearTheSecondIngredientFieldOfTheComponent(string componentName)
 		{
 			EnsureIsInEdit();
-			var row = string.Format("//form[@id='RecipeEditor']//h2[.='Zutaten']/following-sibling::h3[.='{0}']/following-sibling::table[@class='edit'][1]/tbody/tr[2]", componentName);
+			var row = string.Format("//form[@id='RecipeEditor']//h2[.='Zutaten']/following-sibling::h3[.='{0}']/following-sibling::table[contains(@class, 'edit')][1]/tbody/tr[2]", componentName);
 			var amountField = FindDisplayed(By.XPath(row + "/td[1]/input"));
 			var unitField = FindDisplayed(By.XPath(row + "/td[2]/input"));
 			var ingredientField = FindDisplayed(By.XPath(row + "/td[3]/input"));
@@ -318,7 +318,7 @@ namespace RecipeEditor.Tests
 		{
 			EnsureIsInPreview();
 			FindDisplayedList(By.XPath(
-				string.Format("//form[@id='RecipeEditor']//h2[.='Zutaten']/following-sibling::h3[.='{0}']/following-sibling::table[@class='preview'][1]/tbody/tr/td[.='Margarine']", componentName)
+				string.Format("//form[@id='RecipeEditor']//h2[.='Zutaten']/following-sibling::h3[.='{0}']/following-sibling::table[contains(@class, 'preview')][1]/tbody/tr/td[.='Margarine']", componentName)
 				)).Should().BeEmpty();
 		}
 
