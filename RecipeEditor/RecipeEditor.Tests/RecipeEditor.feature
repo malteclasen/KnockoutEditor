@@ -34,6 +34,7 @@ Scenario: Edit Component Title
 	And I type "Kuchenteig"
 	Then the title of the first component should be "Kuchenteig"
 
+@NoPhantomJs
 Scenario: Edit Component Preparation
 	Given I am on the "Streuselkuchen" recipe page
 	And I am in edit mode

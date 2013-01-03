@@ -12,18 +12,25 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeEditor.JsTests", "Rec
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug Chrome|Any CPU = Debug Chrome|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91120DC9-7BA2-4D23-BFD5-FF85173A8D82}.Debug Chrome|Any CPU.ActiveCfg = Debug|Any CPU
+		{91120DC9-7BA2-4D23-BFD5-FF85173A8D82}.Debug Chrome|Any CPU.Build.0 = Debug|Any CPU
 		{91120DC9-7BA2-4D23-BFD5-FF85173A8D82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{91120DC9-7BA2-4D23-BFD5-FF85173A8D82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91120DC9-7BA2-4D23-BFD5-FF85173A8D82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91120DC9-7BA2-4D23-BFD5-FF85173A8D82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7095FCCB-1B3B-4CCC-BE45-7877D0127795}.Debug Chrome|Any CPU.ActiveCfg = Debug Chrome|Any CPU
+		{7095FCCB-1B3B-4CCC-BE45-7877D0127795}.Debug Chrome|Any CPU.Build.0 = Debug Chrome|Any CPU
 		{7095FCCB-1B3B-4CCC-BE45-7877D0127795}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7095FCCB-1B3B-4CCC-BE45-7877D0127795}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7095FCCB-1B3B-4CCC-BE45-7877D0127795}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7095FCCB-1B3B-4CCC-BE45-7877D0127795}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78FC6D22-A2A9-41E8-BAE4-E5B6E54EF9BD}.Debug Chrome|Any CPU.ActiveCfg = Debug|Any CPU
+		{78FC6D22-A2A9-41E8-BAE4-E5B6E54EF9BD}.Debug Chrome|Any CPU.Build.0 = Debug|Any CPU
 		{78FC6D22-A2A9-41E8-BAE4-E5B6E54EF9BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{78FC6D22-A2A9-41E8-BAE4-E5B6E54EF9BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78FC6D22-A2A9-41E8-BAE4-E5B6E54EF9BD}.Release|Any CPU.ActiveCfg = Release|Any CPU

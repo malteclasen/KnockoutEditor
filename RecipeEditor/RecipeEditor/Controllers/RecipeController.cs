@@ -29,7 +29,7 @@ namespace RecipeEditor.Controllers
     						new RecipeModel.ComponentModel
     							{
     								Title = "Teig",
-    								Preparation = "Mehl in eine Schüssel geben und eine Kuhle hineindrücken. Zucker, Hefe und <emph>lauwarmen</emph> Soja-Reis-Drink hineingeben. Mit einem Küchentuch zudecken und 15 Minuten lang gehen lassen. Margarine zerlassen und ebenfalls in die Kuhle geben. Von innenheraus mit dem restlichen Mehl verkneten. Nochmals 15 Minuten lang zugedeckt gehen lassen. Auf einem mit Backpapier ausgelegten Blech ausrollen und wieder 15 Minuten lang gehen lassen.",
+    								Preparation = "Mehl in eine Schüssel geben und eine Kuhle hineindrücken. Zucker, Hefe und <em>lauwarmen</em> Soja-Reis-Drink hineingeben. Mit einem Küchentuch zudecken und 15 Minuten lang gehen lassen. Margarine zerlassen und ebenfalls in die Kuhle geben. Von innenheraus mit dem restlichen Mehl verkneten. Nochmals 15 Minuten lang zugedeckt gehen lassen. Auf einem mit Backpapier ausgelegten Blech ausrollen und wieder 15 Minuten lang gehen lassen.",
     								Ingredients = new List<RecipeModel.ComponentIngredientModel>
     									{
     										new RecipeModel.ComponentIngredientModel

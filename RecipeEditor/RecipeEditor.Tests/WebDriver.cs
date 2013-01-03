@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.PhantomJS;
 using OpenQA.Selenium.Remote;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,11 @@ namespace RecipeEditor.Tests
 
 		public WebDriver()
 		{
+#if CHROME
 			_driver = new ChromeDriver(SolutionFolder);
+#else
+			_driver = new PhantomJSDriver(SolutionFolder);
+#endif
 		}
 
 		public void Dispose()

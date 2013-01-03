@@ -5,6 +5,7 @@ using System.Linq;
 using TechTalk.SpecFlow;
 using FluentAssertions;
 using System.Collections.Generic;
+using System.IO;
 
 namespace RecipeEditor.Tests
 {
@@ -155,14 +156,11 @@ namespace RecipeEditor.Tests
 			ThenTheTitleOfTheNthComponentShouldBe(2, text);
 		}
 
-        
         [Then(@"the preparation of the first component should be ""(.*)""")]
         public void ThenThePreparationOfTheFirstComponentShouldBe(string text)
         {
 			EnsureIsInPreview();
-			FindDisplayed(By.XPath(
-				string.Format("//form[@id='RecipeEditor']//h2[.='Zubereitung']/following-sibling::h3[1]/following-sibling::div[@contenteditable][1]", text)
-				)).Text.Should().Be(text);
+			FindByXPath.ShouldBe(by=>FindDisplayed(by), "//form[@id='RecipeEditor']//h2[.='Zubereitung']/following-sibling::h3[1]/following-sibling::div[@contenteditable][1]", text);
 		}
 
 		[When(@"I click on the add component button")]
