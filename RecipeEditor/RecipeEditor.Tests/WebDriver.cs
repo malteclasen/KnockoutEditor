@@ -29,6 +29,21 @@ namespace RecipeEditor.Tests
 #endif
 		}
 
+		public void CatchLog()
+		{
+			_driver.ExecuteScript(@"console.defaultLog=console.log; console.log=function(msg){console.defaultLog(msg); console.logFile+=msg+'\n';};");
+		}
+
+		public string Log
+		{
+			get { return (string)_driver.ExecuteScript(@"return console.logFile;"); }
+		}
+
+		public void ClearLog()
+		{
+			_driver.ExecuteScript(@"console.logFile='';");
+		}
+
 		public void Dispose()
 		{
 			_driver.Quit();

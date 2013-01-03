@@ -77,8 +77,14 @@ namespace RecipeEditor.Tests
 					var node = nav.SelectSingleNode(xpath);
 					var value = (node != null ? node.TypedValue.ToString() : null);
 
+					var log = WebUiContext.Log;
+					if (!string.IsNullOrEmpty(log))
+					{
+						log = "\n\nconsole.log:\n" + log;
+					}
+
 					Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(expected, value,
-						string.Format("xpath expression \"{0}\" applied to\n\n{1}\n\nshould yield \"{2}\"{3}", xpath, xhtml, expected, exceptionMessage));
+						string.Format("xpath expression \"{0}\" applied to\n\n{1}\n\nshould yield \"{2}\"{3}{4}", xpath, xhtml, expected, exceptionMessage, log));
 				}
 			}
 		}

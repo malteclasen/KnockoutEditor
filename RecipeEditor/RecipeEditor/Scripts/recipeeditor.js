@@ -69,9 +69,9 @@ function ComponentModel(data) {
 
     this.Ingredients($.map(data.Ingredients, function (item) { return new RecipeIngredientModel(item); }));
 
-    this.onUpdatePreparation = function(model, event) {
+    this.onUpdatePreparation = function (model, event) {
         contentEditor.cleanUp(event.target);
-        self.Preparation($(event.target).html());
+    	self.Preparation($(event.target).html());
     };
 
     this.onUpdateTitle = function (model, event) {

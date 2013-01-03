@@ -77,5 +77,15 @@ namespace RecipeEditor.Tests
 		{
 			get { return _webDriver.Driver; }
 		}
+
+		public static string Log
+		{
+			get { return _webDriver.Log; }
+		}
+
+		public static void CatchLog()
+		{
+			_webDriver.CatchLog();
+		}
 	}
 }

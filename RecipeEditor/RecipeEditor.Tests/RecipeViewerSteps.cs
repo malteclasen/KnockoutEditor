@@ -54,12 +54,14 @@ namespace RecipeEditor.Tests
 		public void GivenIAmOnTheHomepage()
 		{
 			Web.Navigate().GoToUrl(WebUiContext.RootUrl);
+			WebUiContext.CatchLog();
 		}
 
 		[Given(@"I am on the ""(.*)"" recipe page")]
 		public void GivenIAmOnTheRecipePage(string p0)
 		{
 			Web.Navigate().GoToUrl(WebUiContext.RootUrl.Append("/Recipe"));
+			WebUiContext.CatchLog();
 		}
 
 		[When(@"I follow the ""(.*)"" link")]
