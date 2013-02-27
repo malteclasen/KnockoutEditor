@@ -12,7 +12,7 @@
 	<a href="~/Recipe">Rezept</a>
 		</div>
 	<div class="span4">
-	<div id="file-uploader">
+	<div id="fine-uploader">
 		<noscript>
 			<p>Please enable JavaScript to use file uploader.</p>
 		</noscript>
@@ -23,38 +23,50 @@
 @section Scripts {
 	@Scripts.Render("~/Scripts/fileuploader")
 	<script type="text/javascript">
-		var uploader = new qq.FileUploader({
-			// pass the dom node (ex. $(selector)[0] for jQuery users)
-			element: document.getElementById('file-uploader'),
-			// path to server-side upload script
-			action: '/Home/Upload'
+		function createUploader() {
+			var uploader = new qq.FineUploader({
+				element: document.getElementById('fine-uploader'),
+				request: {
+					endpoint: '/Home/Upload'
+				},
+				debug: true,
+			});
+		}
 
-			//        // additional data to send, name-value pairs
-			//        params: {},
+		window.onload = createUploader;
 
-			//// validation
-			//// ex. ['jpg', 'jpeg', 'png', 'gif'] or []
-			//        allowedExtensions: [],
-			//// each file size limit in bytes
-			//// this option isn't supported in all browsers
-			//        sizeLimit: 0, // max size
-			//    minSizeLimit: 0, // min size
+		//var uploader = new qq.FileUploader({
+		//	// pass the dom node (ex. $(selector)[0] for jQuery users)
+		//	element: document.getElementById('file-uploader'),
+		//	// path to server-side upload script
+		//	action: '/Home/Upload'
 
-			//// set to true to output server response to console
-			//    debug: false,
+		//	//        // additional data to send, name-value pairs
+		//	//        params: {},
 
-			//// events
-			//// you can return false to abort submit
-			//    onSubmit: function(id, fileName){},
-			//    onProgress: function(id, fileName, loaded, total){},
-			//    onComplete: function(id, fileName, responseJSON){},
-			//    onCancel: function(id, fileName){},
+		//	//// validation
+		//	//// ex. ['jpg', 'jpeg', 'png', 'gif'] or []
+		//	//        allowedExtensions: [],
+		//	//// each file size limit in bytes
+		//	//// this option isn't supported in all browsers
+		//	//        sizeLimit: 0, // max size
+		//	//    minSizeLimit: 0, // min size
 
-			//    messages: {
-			//        // error messages, see qq.FileUploaderBasic for content
-			//    },
-			//    showMessage: function(message){ alert(message); }
-		});
+		//	//// set to true to output server response to console
+		//	//    debug: false,
+
+		//	//// events
+		//	//// you can return false to abort submit
+		//	//    onSubmit: function(id, fileName){},
+		//	//    onProgress: function(id, fileName, loaded, total){},
+		//	//    onComplete: function(id, fileName, responseJSON){},
+		//	//    onCancel: function(id, fileName){},
+
+		//	//    messages: {
+		//	//        // error messages, see qq.FileUploaderBasic for content
+		//	//    },
+		//	//    showMessage: function(message){ alert(message); }
+		//});
 
 	</script>
 }

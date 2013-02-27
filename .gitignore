@@ -3,3 +3,4 @@ RecipeEditor/_ReSharper.RecipeEditor/*
 RecipeEditor/*/bin/*
 RecipeEditor/*/obj/*
 *.ncrunchsolution.user
+RecipeEditor/RecipeEditor.JsTests/Scripts/jasmine/_Chutzpah.*.test.html

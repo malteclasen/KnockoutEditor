@@ -154,6 +154,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fileuploader.css" />
     <Content Include="Content\icons\loading.gif" />
+    <Content Include="Content\icons\processing.gif" />
     <Content Include="Content\icons\tango\16x16\actions\address-book-new.png" />
     <Content Include="Content\icons\tango\16x16\actions\appointment-new.png" />
     <Content Include="Content\icons\tango\16x16\actions\bookmark-new.png" />
