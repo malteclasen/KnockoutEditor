@@ -1,0 +1,61 @@
+﻿#Recipe, #RecipeEditor {
+
+	.span4, .span8 {
+		position: relative;
+	}
+
+	.photo {
+		width: 100%;
+	}
+
+	div.ingredient input {
+		width: 90%;
+	}
+
+	tr.ingredient {
+		.amount {
+			width: 20%;
+			text-align: right;
+			padding-right: 0.5em;
+		}
+
+		.unit {
+			width: 10%;
+			padding-right: 0.5em;
+		}
+	}
+
+	.edit tr.ingredient {
+		.amount {
+			text-align: right;
+			input {
+
+				width: 80%;
+			}
+			input::-webkit-outer-spin-button,
+			input::-webkit-inner-spin-button {
+				display: none;
+			}
+		}
+
+		.unit {
+			width: 20%;
+			input {
+				width: 80%;
+			}
+		}
+
+		.name {
+			input {
+				width: 90%;
+			}
+		}
+		td {
+			border-top: none;
+
+			input {
+				margin-bottom: 0;
+			}
+		}
+	}
+}

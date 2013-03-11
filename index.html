@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Recipe Editor</title>
+</head>
+<body>
+<form action="#">
+<div data-bind="with: data">
+	<h1 data-bind="text: title">Titel</h1>
+	<img src="images/tango/32x32/status/image-missing.png" alt="recipe" data-bind="attr: {src: image.src}"/>
+	<div>Foto von <span data-bind="text: image.author"></span></div>
+	Kategorien:
+	<ul data-bind="foreach: categories">
+		<li data-bind="text: $data"></li>
+	</ul>
+	<h2>Zutaten</h2>
+	<!-- ko foreach: components -->
+	<h3 data-bind="text: title"></h3>
+	<button type="button"><img alt="list-remove" src="images/tango/16x16/actions/list-remove.png"/></button>
+	<table data-bind="foreach: ingredients">
+		<tr>
+			<!-- ko if: quantity -->
+			<td data-bind="text:quantity().amount"></td>
+			<td data-bind="text:quantity().unit"></td>
+			<!-- /ko -->
+			<!-- ko ifnot: quantity -->
+			<td></td><td></td>
+			<!-- /ko -->
+			<td><a data-bind="text:ingredient().name, attr: {href: ingredient().url}"></a></td>
+		</tr>
+	</table>
+	<!-- /ko -->
+	<button type="button"><img alt="list-add" src="images/tango/16x16/actions/list-add.png"/></button>
+	<h2>Zubereitung</h2>
+	<!-- ko foreach: components -->
+	<h3 data-bind="text: title"></h3>
+    <div class="contentEditableToolbar">
+        <button type="button" data-bind="event: { click: onFormatBold }"><img src="images/tango/22x22/actions/format-text-bold.png"/></button>
+        <button type="button" data-bind="event: { click: onFormatItalic }"><img src="images/tango/22x22/actions/format-text-italic.png"/></button>
+        <button type="button" data-bind="event: { click: onUndo }"><img src="images/tango/22x22/actions/edit-undo.png"/></button>
+        <button type="button" data-bind="event: { click: onRedo }"><img src="images/tango/22x22/actions/edit-redo.png"/></button>
+    </div>
+    <div contentEditable="true" data-bind="html: preparation, event: {change: onUpdatePreparation}">
+	</div>
+	<!-- /ko -->
+</div>
+</form>
+<form action="#">
+	<textarea rows="20" cols="80" data-bind="text: json" style="width: 600px; height: 400px;"></textarea>
+</form>
+
+<script type='text/javascript' src='js/knockout-2.0.0.js'></script>
+<script type='text/javascript' src='js/knockout.mapping-latest.js'></script>
+<script type='text/javascript' src='js/jquery-1.7.2.min.js'></script>
+<script type='text/javascript' src='js/jquery-ui-1.8.18.custom.min.js'></script>
+<script type='text/javascript' src='js/richtexteditor.js'></script>
+<script type='text/javascript' src='js/recipeeditor.js'></script>
+<script type='text/javascript'>
+</script>
+</body>
+</html>
