@@ -15,17 +15,22 @@ namespace RecipeEditor.Tests
 		private static RemoteWebDriver _driver;
 		public RemoteWebDriver Driver { get { return _driver; } }
 
-		private string SolutionFolder
+		private string ProjectFolder
 		{
-			get { return Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory))); }
+			get
+			{
+				if (NCrunch.Framework.NCrunchEnvironment.NCrunchIsResident())
+					return Path.GetDirectoryName(NCrunch.Framework.NCrunchEnvironment.GetOriginalProjectPath());
+				return Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory))) + "RecipeEditor.Tests/";
+			}
 		}
 
 		public WebDriver()
 		{
 #if CHROME
-			_driver = new ChromeDriver(".");
+			_driver = new ChromeDriver(ProjectFolder);
 #else
-			_driver = new PhantomJSDriver(".");
+			_driver = new PhantomJSDriver(ProjectFolder);
 #endif
 		}
 
