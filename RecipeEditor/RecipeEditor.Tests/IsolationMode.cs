@@ -8,8 +8,8 @@ namespace RecipeEditor.Tests
 {
 	public enum IsolationMode
 	{
-		Method,
-		Class,
+		Scenario,
+		Feature,
 		Global
 	}
 }

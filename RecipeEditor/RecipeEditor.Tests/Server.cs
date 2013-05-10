@@ -33,7 +33,7 @@ namespace RecipeEditor.Tests
 						{
 							FileName = programFiles + "\\IIS Express\\iisexpress.exe",
 							Arguments = string.Format("/path:\"{0}\" /port:{1}", applicationPath, _iisPort),
-							WindowStyle = ProcessWindowStyle.Minimized
+							WindowStyle = ProcessWindowStyle.Hidden
 						}
 				};
 			_iisProcess.Start();

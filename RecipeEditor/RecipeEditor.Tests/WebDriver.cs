@@ -21,7 +21,7 @@ namespace RecipeEditor.Tests
 			{
 				if (NCrunch.Framework.NCrunchEnvironment.NCrunchIsResident())
 					return Path.GetDirectoryName(NCrunch.Framework.NCrunchEnvironment.GetOriginalProjectPath());
-				return Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory))) + "RecipeEditor.Tests/";
+				return Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory))) + "\\RecipeEditor.Tests";
 			}
 		}
 

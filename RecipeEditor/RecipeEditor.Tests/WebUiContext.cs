@@ -12,15 +12,15 @@ namespace RecipeEditor.Tests
 		private static Server _server;
 		private static WebDriver _webDriver;
 
-		public static void ClassInitialize(IsolationMode webDriverIsolation = IsolationMode.Class, IsolationMode serverIsolation = IsolationMode.Global)
+		public static void ClassInitialize(IsolationMode webDriverIsolation = IsolationMode.Feature, IsolationMode serverIsolation = IsolationMode.Feature)
 		{
 			if (webDriverIsolation != IsolationMode.Global)
-				StopDrivers();
+				StopWebDriver();
 			if (serverIsolation != IsolationMode.Global)
-				StopIIS();
+				StopServer();
 		}
 
-		public static void TestInitialize()
+		public static void ScenarioInitialize()
 		{
 			if (_server == null)
 				_server = new Server();
@@ -28,29 +28,29 @@ namespace RecipeEditor.Tests
 				_webDriver = new WebDriver();
 		}
 
-		public static void TestCleanup(IsolationMode webDriverIsolation = IsolationMode.Class, IsolationMode serverIsolation = IsolationMode.Global)
+		public static void ScenarioCleanup(IsolationMode webDriverIsolation = IsolationMode.Feature, IsolationMode serverIsolation = IsolationMode.Feature)
 		{
-			if (webDriverIsolation == IsolationMode.Method)
-				StopDrivers();
-			if (serverIsolation == IsolationMode.Method)
-				StopIIS();
+			if (webDriverIsolation == IsolationMode.Scenario)
+				StopWebDriver();
+			if (serverIsolation == IsolationMode.Scenario)
+				StopServer();
 		}
 
-		public static void ClassCleanup(IsolationMode webDriverIsolation = IsolationMode.Class, IsolationMode serverIsolation = IsolationMode.Global)
+		public static void FeatureCleanup(IsolationMode webDriverIsolation = IsolationMode.Feature, IsolationMode serverIsolation = IsolationMode.Feature)
 		{
-			if (webDriverIsolation == IsolationMode.Class)
-				StopDrivers();
-			if (serverIsolation == IsolationMode.Class)
-				StopIIS();
+			if (webDriverIsolation == IsolationMode.Feature)
+				StopWebDriver();
+			if (serverIsolation == IsolationMode.Feature)
+				StopServer();
 		}
 
 		public static void RunCleanup()
 		{
-			StopDrivers();
-			StopIIS();
+			StopWebDriver();
+			StopServer();
 		}
 
-		private static void StopDrivers()
+		private static void StopWebDriver()
 		{
 			if (_webDriver != null)
 			{
@@ -59,7 +59,7 @@ namespace RecipeEditor.Tests
 			}
 		}
 
-		private static void StopIIS()
+		private static void StopServer()
 		{
 			if (_server != null)
 			{

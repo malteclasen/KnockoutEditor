@@ -4,3 +4,7 @@ RecipeEditor/*/bin/*
 RecipeEditor/*/obj/*
 *.ncrunchsolution.user
 RecipeEditor/RecipeEditor.JsTests/Scripts/jasmine/_Chutzpah.*.test.html
+RecipeEditor/_NCrunch_RecipeEditor
+RecipeEditor/*.user
+RecipeEditor/RecipeEditor/*.user
+RecipeEditor/RecipeEditor.JsTests/*.user

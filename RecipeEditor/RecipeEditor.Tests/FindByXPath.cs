@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using FluentAssertions;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using System;
 using System.Collections.Generic;
@@ -83,7 +84,7 @@ namespace RecipeEditor.Tests
 						log = "\n\nconsole.log:\n" + log;
 					}
 
-					Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(expected, value,
+					expected.Should().Be(value,
 						string.Format("xpath expression \"{0}\" applied to\n\n{1}\n\nshould yield \"{2}\"{3}{4}", xpath, xhtml, expected, exceptionMessage, log));
 				}
 			}
