@@ -16,6 +16,8 @@ namespace RecipeEditor.Tests {
 
 		protected WebUiTestBase(IsolationMode webDriverIsolation = IsolationMode.Class, IsolationMode serverIsolation = IsolationMode.Global)
 		{
+			if (NCrunch.Framework.NCrunchEnvironment.NCrunchIsResident())
+				throw new InvalidOperationException("ncrunch not supported, as it does not run ClassCleanup"); //todo: refactor tests to avoid clas cleanup
 			_webDriverIsolation = webDriverIsolation;
 			_serverIsolation = serverIsolation;
 		}
