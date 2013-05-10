@@ -23,9 +23,9 @@ namespace RecipeEditor.Tests
 		public WebDriver()
 		{
 #if CHROME
-			_driver = new ChromeDriver(SolutionFolder);
+			_driver = new ChromeDriver(".");
 #else
-			_driver = new PhantomJSDriver(SolutionFolder);
+			_driver = new PhantomJSDriver(".");
 #endif
 		}
 
