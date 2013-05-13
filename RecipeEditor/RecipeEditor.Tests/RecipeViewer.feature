@@ -3,7 +3,6 @@
 	As a layman
 	I want to get to know what I need and how I do it
 
-@mytag
 Scenario: Navigate to the recipe
 	Given I am on the homepage
 	When I follow the "Rezept" link

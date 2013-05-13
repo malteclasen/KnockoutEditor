@@ -78,15 +78,14 @@ namespace RecipeEditor.Tests
         [Xunit.TraitAttribute("Description", "Navigate to the recipe")]
         public virtual void NavigateToTheRecipe()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Navigate to the recipe", new string[] {
-                        "mytag"});
-#line 7
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Navigate to the recipe", ((string[])(null)));
+#line 6
 this.ScenarioSetup(scenarioInfo);
-#line 8
+#line 7
  testRunner.Given("I am on the homepage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 9
+#line 8
  testRunner.When("I follow the \"Rezept\" link", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 10
+#line 9
  testRunner.Then("the recipe for \"Streuselkuchen\" should be visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -98,19 +97,19 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void ViewTheRecipe()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("View the recipe", ((string[])(null)));
-#line 12
+#line 11
 this.ScenarioSetup(scenarioInfo);
-#line 13
+#line 12
  testRunner.Given("I am on the \"Streuselkuchen\" recipe page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 14
+#line 13
  testRunner.Then("there should be the component \"Teig\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 15
+#line 14
  testRunner.And("there should be the component \"Streusel\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 16
+#line 15
  testRunner.And("the component \"Teig\" should contain 400 g Mehl", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 17
+#line 16
  testRunner.And("the component \"Streusel\" should contain an unspecified amount of Zimt", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 18
+#line 17
  testRunner.And("the preparation of \"Streusel\" should have a strong emphasis of \"gleichmäßig\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
