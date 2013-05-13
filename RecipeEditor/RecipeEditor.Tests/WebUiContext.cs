@@ -9,7 +9,7 @@ namespace RecipeEditor.Tests
 {
 	public static class WebUiContext
 	{
-		private static Server _server;
+		private static IServer _server;
 		private static WebDriver _webDriver;
 
 		public static void ClassInitialize(IsolationMode webDriverIsolation = IsolationMode.Feature, IsolationMode serverIsolation = IsolationMode.Feature)
@@ -23,7 +23,7 @@ namespace RecipeEditor.Tests
 		public static void ScenarioInitialize()
 		{
 			if (_server == null)
-				_server = new Server();
+				_server = new IisServer();
 			if (_webDriver == null)
 				_webDriver = new WebDriver();
 		}

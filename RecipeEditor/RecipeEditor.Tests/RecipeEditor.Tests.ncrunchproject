@@ -24,4 +24,5 @@
       <TestName>RecipeEditor.Tests.RecipeEditorFeature.EditComponentPreparation</TestName>
     </NamedTestSelector>
   </IgnoredTests>
+  <HiddenWarnings>LongTestTimesWithoutParallelExecution</HiddenWarnings>
 </ProjectConfiguration>

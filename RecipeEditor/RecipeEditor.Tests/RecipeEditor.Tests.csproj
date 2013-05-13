@@ -44,6 +44,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CassiniDev4-lib">
+      <HintPath>..\packages\CassiniDev.4.0\lib\net40\CassiniDev4-lib.dll</HintPath>
+    </Reference>
     <Reference Include="FluentAssertions, Version=2.0.1.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\FluentAssertions.2.0.1\lib\net45\FluentAssertions.dll</HintPath>
@@ -53,7 +56,9 @@
       <HintPath>..\packages\NCrunch.Framework.1.45.0.11\lib\net35\NCrunch.Framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="TechTalk.SpecFlow">
@@ -83,7 +88,9 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="CassiniDevServer.cs" />
     <Compile Include="FindByXPath.cs" />
+    <Compile Include="IServer.cs" />
     <Compile Include="IsolationMode.cs" />
     <Compile Include="RecipeEditor.feature.cs">
       <AutoGen>True</AutoGen>
@@ -97,7 +104,7 @@
       <DependentUpon>RecipeViewer.feature</DependentUpon>
     </Compile>
     <Compile Include="RecipeViewerSteps.cs" />
-    <Compile Include="Server.cs" />
+    <Compile Include="IisServer.cs" />
     <Compile Include="UriExtension.cs" />
     <Compile Include="WebDriver.cs" />
     <Compile Include="WebUiContext.cs" />
