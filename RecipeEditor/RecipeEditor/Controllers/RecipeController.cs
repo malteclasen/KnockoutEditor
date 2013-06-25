@@ -9,7 +9,7 @@ namespace RecipeEditor.Controllers
 {
     public class RecipeController : Controller
     {
-    	private RecipeModel _model;
+    	private static RecipeModel _model;
 
     	public RecipeController()
     	{
@@ -111,6 +111,7 @@ namespace RecipeEditor.Controllers
         }
 
 		[AcceptVerbs(HttpVerbs.Get)]
+		[OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
 		public ActionResult Get()
 		{
 			return Json(_model, JsonRequestBehavior.AllowGet);
